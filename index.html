@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hemani Vanavi — UI/UX Designer & Full Stack Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Hemani Vanavi — UI/UX Designer & Full Stack Developer from Gujarat, India. Python, Django, REST APIs, OpenCV and interface design."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient-layer"></div>
+      <div class="grain"></div>
+      <div class="cursor-glow"></div>
+
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a href="#home" class="brand">
+            <span class="brand-logo">Ms</span>
+            <span class="brand-text">Hemani Vanavi</span>
+          </a>
+          <nav class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#journey" class="nav-link">Journey</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </nav>
+          <div class="topbar-actions">
+            <a href="#contact" class="button button-primary">Let&rsquo;s talk</a>
+            <div class="theme-switcher">
+              <button type="button" class="theme-button theme-afterglow active" data-theme="afterglow">
+                <span class="sr-only">Afterglow theme</span>
+              </button>
+              <button type="button" class="theme-button theme-midnight" data-theme="midnight">
+                <span class="sr-only">Midnight theme</span>
+              </button>
+              <button type="button" class="theme-button theme-aurora" data-theme="aurora">
+                <span class="sr-only">Aurora theme</span>
+              </button>
+            </div>
+            <button class="menu-button" id="mobile-menu-toggle" aria-label="Open menu">☰</button>
+          </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+          <a href="#home" class="mobile-link">Home</a>
+          <a href="#about" class="mobile-link">About</a>
+          <a href="#skills" class="mobile-link">Skills</a>
+          <a href="#projects" class="mobile-link">Projects</a>
+          <a href="#services" class="mobile-link">Services</a>
+          <a href="#journey" class="mobile-link">Journey</a>
+          <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+      </header>
+
+      <main>
+        <!-- ============ HERO ============ -->
+        <section id="home" class="section hero">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">UI/UX Designer &middot; Full Stack Developer</span>
+              <h1>
+                Interfaces people <span class="text-gradient">enjoy</span>, backed by code that <span class="text-gradient">holds up.</span>
+              </h1>
+              <p class="lede">
+                I&rsquo;m Hemani Vanavi, a BCA graduate from Junagadh, Gujarat. I design clean,
+                usable interfaces and shape polished UI/UX journeys that feel purposeful and modern.
+              </p>
+              <div class="hero-actions">
+                <a href="#projects" class="button button-primary">View my work</a>
+                <a href="#contact" class="button button-ghost">Get in touch</a>
+              </div>
+              <div class="stats-row">
+                <div class="stat-card">
+                  <p class="stat-number">4+</p>
+                  <p class="stat-label">Projects built</p>
+                </div>
+                <div class="stat-card">
+                  <p class="stat-number">10+</p>
+                  <p class="stat-label">Core technologies</p>
+                </div>
+                <div class="stat-card">
+                  <p class="stat-number">2026</p>
+                  <p class="stat-label">BCA graduate</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-stage">
+              <canvas class="hero-stage-canvas" id="hero-canvas"></canvas>
+              <div class="hero-card-glow"></div>
+              <div class="hero-card" id="hero-card">
+                <div class="hero-card-top">
+                  <span class="hero-card-tag">Featured case study</span>
+                  <div class="dot-row"><span></span><span></span><span></span></div>
+                </div>
+                <div class="hero-card-mock">
+                  <img src="dust-glow-mockup.jpg" alt="Dust &amp; Glow beauty app UI concept designed by Hemani Vanavi" />
+                </div>
+                <div class="hero-card-meta">
+                  <h4>Dust &amp; Glow — App UI Concept</h4>
+                  <p>A glow-themed shopping experience designed end-to-end, from wireframe to hi-fi UI.</p>
+                </div>
+              </div>
+              <div class="hero-chip hero-chip-a">🎨 Figma &rarr; Code</div>
+              <div class="hero-chip hero-chip-b">⚙️ Fullstack + Node.js</div>
+            </div>
+          </div>
+
+          <div class="marquee">
+            <div class="marquee-track">
+             <span>Figma</span><span>UI/UX</span><span>React</span>
+              <span>Html</span><span>Css</span><span>Javascript</span><span>Figma</span><span>UI/UX</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ ABOUT ============ -->
+        <section id="about" class="section">
+          <div class="section-intro">
+            <span class="eyebrow">About</span>
+            <h2>Two disciplines, one workflow</h2>
+            <p>I move from a blank Figma frame to a working Django endpoint in the same afternoon — and I like it that way.</p>
+          </div>
+          <div class="about-grid">
+            <div class="glass-card about-panel reveal">
+              <p class="panel-title small-label">Who I am</p>
+              <p>
+                I&rsquo;m a recent BCA graduate from Noble University,
+                Junagadh, currently building my career as a UI/UX-minded Full Stack Developer.
+                My backend foundation is Python, Django and Django REST Framework, paired with
+                PostgreSQL and MySQL for data, and OpenCV when a project needs computer vision.
+              </p>
+              <p>
+                On the design side, I plan flows, wireframe, and put together interfaces with a
+                consistent visual language before I ever open an editor — which is why my
+                projects tend to look considered rather than assembled.
+              </p>
+              <p>
+                I&rsquo;m actively looking for Full Stack or Python/Django Developer roles across
+                Gujarat, and I&rsquo;m open to remote opportunities across India.
+              </p>
+            </div>
+            <div class="info-grid">
+              <div class="glass-card info-card reveal">
+                <span>Location</span>
+                <strong>Gujarat, India</strong>
+              </div>
+              <div class="glass-card info-card reveal">
+                <span>Education</span>
+                <strong>BCA, Noble University</strong>
+              </div>
+              <div class="glass-card info-card reveal">
+                <span>Email</span>
+                <strong>hemani.vanvi@example.com</strong>
+              </div>
+              <div class="glass-card info-card reveal">
+                <span>Availability</span>
+                <strong>Open to full-time &amp; remote</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ SKILLS ============ -->
+        <section id="skills" class="section">
+          <div class="section-intro">
+            <span class="eyebrow">Skills</span>
+            <h2>What I bring to a product team</h2>
+          </div>
+          <div class="skills-grid">
+            <div class="glass-card skill-card reveal">
+              <h3>UI/UX Design</h3>
+              <div class="skill-row">
+                <div class="skill-label"><span>Wireframing &amp; Prototyping</span><span>85%</span></div>
+                <div class="skill-bar" data-value="85"><span></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>Visual &amp; Interaction Design</span><span>88%</span></div>
+                <div class="skill-bar" data-value="88"><span></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>Design Systems</span><span>78%</span></div>
+                <div class="skill-bar" data-value="78"><span></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>Responsive Web Design</span><span>90%</span></div>
+                <div class="skill-bar" data-value="90"><span></span></div>
+              </div>
+              <div class="toolbelt">
+                <span>Figma</span><span>Color Theory</span><span>Typography</span><span>User Flows</span>
+              </div>
+            </div>
+            <div class="glass-card skill-card reveal">
+              <h3>Full Stack Development</h3>
+              <div class="skill-row">
+                <div class="skill-label"><span>Python &amp; Django</span><span>90%</span></div>
+                <div class="skill-bar" data-value="90"><span></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>Django REST Framework</span><span>85%</span></div>
+                <div class="skill-bar" data-value="85"><span></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>PostgreSQL / MySQL</span><span>78%</span></div>
+                <div class="skill-bar" data-value="78"><span></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>OpenCV / Computer Vision</span><span>72%</span></div>
+                <div class="skill-bar" data-value="72"><span></span></div>
+              </div>
+              <div class="toolbelt">
+                <span>Python</span><span>Django</span><span>DRF</span><span>Git &amp; GitHub</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ PROJECTS ============ -->
+        <section id="projects" class="section">
+          <div class="section-intro">
+            <span class="eyebrow">Projects</span>
+            <h2>Selected work</h2>
+            <p>A mix of interface design and full-stack builds — each one taken from idea to a working product.</p>
+          </div>
+
+          <div class="glass-card project-feature reveal">
+            <div class="project-media">
+              <img src="dust-glow-mockup.jpg" alt="Dust and Glow beauty commerce app screen" />
+              <span class="project-media-badge">UI/UX Case Study</span>
+            </div>
+            <div class="project-summary">
+              <span class="project-tag">Design Concept</span>
+              <h3>Dust &amp; Glow — Beauty Commerce App</h3>
+              <p>
+                A concept mobile shopping app for a beauty brand, designed around a soft
+                glow-and-gradient identity. I mapped the shopping flow from browsing to cart,
+                then built a warm, glass-panel visual system with a cohesive product grid,
+                pricing layout, and cart indicator.
+              </p>
+              <div class="feature-tags">
+                <span>User Flows</span><span>Wireframes</span><span>Hi-Fi UI</span><span>Design System</span>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="glass-card process-card reveal">
+            <p class="small-label">How I work, end to end</p>
+            <div class="process-tags">
+              <span>Requirement Analysis</span>
+              <span>User Research</span>
+              <span>Wireframing</span>
+              <span>Hi-Fi UI</span>
+              <span>API &amp; Database Design</span>
+              <span>Development</span>
+              <span>Testing</span>
+              <span>Deployment</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ SERVICES ============ -->
+        <section id="services" class="section">
+          <div class="section-intro">
+            <span class="eyebrow">Services</span>
+            <h2>What I can build for you</h2>
+          </div>
+          <div class="services-grid">
+            <div class="glass-card service-card reveal">
+              <div class="service-icon">🎨</div>
+              <h3>UI/UX Design</h3>
+              <p>Wireframes, flows and interfaces designed around how people actually use a product.</p>
+            </div>
+            <div class="glass-card service-card reveal">
+              <div class="service-icon">💻</div>
+              <h3>Full Stack Development</h3>
+              <p>Django backends and REST APIs connected to clean, responsive frontends.</p>
+            </div>
+            <div class="glass-card service-card reveal">
+              <div class="service-icon">🔗</div>
+              <h3>REST API Development</h3>
+              <p>Well-structured APIs with Django REST Framework, ready for web or mobile clients.</p>
+            </div>
+            <div class="glass-card service-card reveal">
+              <div class="service-icon">👁️</div>
+              <h3>Computer Vision Integration</h3>
+              <p>OpenCV-powered features like face recognition and image-based automation.</p>
+            </div>
+            <div class="glass-card service-card reveal">
+              <div class="service-icon">🧩</div>
+              <h3>Design Systems</h3>
+              <p>Reusable component and style libraries that keep a product visually consistent.</p>
+            </div>
+            <div class="glass-card service-card reveal">
+              <div class="service-icon">📱</div>
+              <h3>Responsive Websites</h3>
+              <p>Sites and dashboards that hold their layout from desktop down to mobile.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ JOURNEY ============ -->
+        <section id="journey" class="section">
+          <div class="section-intro">
+            <span class="eyebrow">Journey</span>
+            <h2>Experience &amp; achievements</h2>
+          </div>
+          <div class="journey-grid">
+            <div class="glass-card journey-card reveal">
+              <h3>Experience</h3>
+              <div class="timeline-item">
+                <strong>Bachelor of Computer Applications</strong>
+                <span>Noble University, Junagadh &middot; 2023 – 2026</span>
+              </div>
+              <div class="timeline-item">
+                <strong>UI/UX &amp; Full-Stack Project Work</strong>
+                <span>Independent projects &middot; 2024 – Present</span>
+              </div>
+            </div>
+            <div class="glass-card achievement-card reveal">
+              <h3>Achievements</h3>
+              <ul>
+                <li>Completed Bachelor of Computer Applications, Noble University, Junagadh</li>
+                <li>Designed and shipped a redesigned personal portfolio with 3D interactions</li>
+                <li>Delivered UI/UX design and frontend implementation for a beauty commerce experience</li>
+                </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section id="contact" class="section">
+          <div class="section-intro">
+            <span class="eyebrow">Contact</span>
+            <h2>Let&rsquo;s build something worth using</h2>
+          </div>
+          <div class="contact-grid">
+            <div class="glass-card contact-panel reveal">
+              <h3>Tell me about the role or project.</h3>
+              <p>I reply within 24 hours — open to full-time roles, freelance work, or just a conversation about design and code.</p>
+              <a href="mailto:hemani.vanvi@example.com" class="contact-link">hemani.vanvi@example.com</a>
+              <div class="contact-info"><strong>Gujarat, India</strong></div>
+              <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+              </div>
+            </div>
+            <form class="glass-card contact-form reveal" id="contact-form">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@email.com" required />
+              </label>
+              <label>
+                <span>Subject</span>
+                <input type="text" name="subject" placeholder="What's it about?" />
+              </label>
+              <label>
+                <span>Message</span>
+                <textarea name="message" rows="5" placeholder="Tell me a little about the opportunity…" required></textarea>
+              </label>
+              <button type="submit" class="button button-primary">Send message</button>
+              <p class="form-message" id="form-message"></p>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>&copy; <span id="year">2026</span> Hemani Vanavi. Designed and built with care.</p>
+        <p>Crafted with HTML, CSS, JavaScript &amp; Three.js.</p>
+      </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
