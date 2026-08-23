@@ -33,7 +33,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 2. Navigation Scroll Effect
+    // 2. Theme Toggle Logic
+    const themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            themeToggle.innerHTML = "☀";
+        }
+
+        themeToggle.addEventListener("click", () => {
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+            if (isDark) {
+                document.documentElement.setAttribute("data-theme", "light");
+                localStorage.setItem("theme", "light");
+                themeToggle.innerHTML = "☾";
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+                themeToggle.innerHTML = "☀";
+            }
+        });
+    }
+
+    // 3. Navigation Scroll Effect
     const nav = document.getElementById("nav");
     window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
@@ -87,9 +110,12 @@ document.addEventListener("DOMContentLoaded", () => {
         trigger: "#chart",
         start: "top 80%",
         onEnter: () => {
-            document.querySelectorAll(".chart-fill").forEach(bar => {
-                bar.style.height = bar.getAttribute("data-height");
-                bar.style.transition = "height 1.5s cubic-bezier(0.16, 1, 0.3, 1)";
+            gsap.utils.toArray(".chart-fill").forEach(bar => {
+                gsap.to(bar, {
+                    height: bar.getAttribute("data-height"),
+                    duration: 1.5,
+                    ease: "power3.out"
+                });
             });
         },
         once: true

@@ -253,6 +253,10 @@ h6 {
   flex-direction: column;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .items-center {
   align-items: center;
 }
