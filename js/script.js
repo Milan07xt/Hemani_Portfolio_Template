@@ -110,4 +110,19 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power3.out"
         });
     });
+
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            if (currentTheme === "dark") {
+                document.documentElement.removeAttribute("data-theme");
+                themeToggle.textContent = "☾"; // Moon icon for light mode
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                themeToggle.textContent = "☀"; // Sun icon for dark mode
+            }
+        });
+    }
 });

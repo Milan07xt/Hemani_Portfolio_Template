@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemani Vanvi — UI/UX Designer & Full Stack Developer</title>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- GSAP for Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
+
 <body>
 
     <!-- Custom Cursor -->
@@ -32,7 +35,13 @@
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#lab" class="nav-link">Lab</a>
             </div>
-            <a href="#contact" class="btn">Contact ↗</a>
+            <div class="flex items-center" style="gap: 1rem;">
+                <button id="theme-toggle"
+                    style="border-radius: 50%; width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; border: 1px solid var(--c-border); background: var(--c-white); color: var(--c-black); transition: var(--transition);">
+                    ☾
+                </button>
+                <a href="#contact" class="btn">Contact ↗</a>
+            </div>
         </div>
     </nav>
 
@@ -41,10 +50,10 @@
         <div class="hero-content">
             <div class="hero-availability">Available for selected opportunities</div>
             <h1 class="text-hero hero-title">
-                Hello,<br>I'm Hemani.
+                Hello,<img src="assets/profile/hemani.jpg" alt="Hemani" class="hero-avatar"><br>I'm Hemani
             </h1>
-            <h2 class="label">UI/UX Designer<br>+ Full Stack Developer</h2>
-            <br>
+            <h2 class="label">UI/UX Designer + Full Stack Developer</h2>
+
             <p class="hero-desc" style="margin-top: 2rem;">
                 I design intuitive digital experiences and build modern web products where design meets technology.
             </p>
@@ -53,18 +62,21 @@
                 <a href="#contact" class="btn btn-secondary">Let's Talk ↗</a>
             </div>
         </div>
-        
+
         <div class="hero-visual" id="hero-visual">
-            <div class="workflow-card">
-                <div class="wc-title">USER RESEARCH</div>
+            <div class="workflow-card"
+                style="box-shadow: 0 10px 30px rgb(0, 191, 255), 0 0 20px rgba(0, 191, 255, 0.1); border-color: rgba(0, 191, 255, 0.3);">
+                <div class="wc-title" style="color: #00BFFF;">USER RESEARCH</div>
                 <div class="wc-list">Personas<br>User Journey</div>
             </div>
-            <div class="workflow-card">
-                <div class="wc-title">UI/UX DESIGN</div>
+            <div class="workflow-card"
+                style="box-shadow: 0 10px 30px rgb(250, 0, 133), 0 0 20px rgba(255, 20, 147, 0.1); border-color: rgba(255, 20, 147, 0.3);">
+                <div class="wc-title" style="color: #FF1493;">UI/UX DESIGN</div>
                 <div class="wc-list">Figma<br>Wireframes<br>Prototypes</div>
             </div>
-            <div class="workflow-card" style="background: var(--c-black); color: var(--c-white); border-color: var(--c-black);">
-                <div class="wc-title" style="color: var(--c-white);">DEVELOPMENT</div>
+            <div class="workflow-card"
+                style="background: var(--c-black); color: var(--c-white); border-color: var(--c-black); box-shadow: 0 15px 40px rgba(247, 0, 0, 0.988), 0 0 25px rgba(57, 255, 20, 0.2);">
+                <div class="wc-title" style="color: #39FF14;">DEVELOPMENT</div>
                 <div class="wc-list" style="color: var(--c-gray);">Frontend<br>APIs<br>Database</div>
             </div>
         </div>
@@ -72,39 +84,65 @@
 
     <!-- 03 ABOUT -->
     <section id="about" class="section container" style="margin-top: 5vw;">
-        <h2 class="text-h1" style="max-width: 800px; margin-bottom: 2rem;">
-            ABOUT ME
-        </h2>
-        <p style="font-size: 1.5rem; color: var(--c-gray); max-width: 800px; line-height: 1.6; margin-bottom: 4rem;">
-            Hello! I am Hemani, a passionate UI/UX Designer and Full Stack Developer. I enjoy creating seamless digital experiences that blend beautiful, user-centric interfaces with robust, scalable technologies. Currently pursuing my BCA at Noble University, I am dedicated to continuously learning and building products that are both visually stunning and highly functional.
-        </p>
+        <div class="grid grid-2" style="align-items: center; gap: 4rem; margin-bottom: 4rem;">
+            <div>
+                <h2 class="text-h1" style="margin-bottom: 2rem;">
+                    ABOUT ME
+                </h2>
+                <p style="font-size: 1.5rem; color: var(--c-gray); line-height: 1.6;">
+                    Hello! I am Hemani, a passionate UI/UX Designer and Full Stack Developer. I enjoy creating seamless
+                    digital
+                    experiences that blend beautiful, user-centric interfaces with robust, scalable technologies.
+                    Currently
+                    pursuing my BCA at Noble University, I am dedicated to continuously learning and building products
+                    that are
+                    both visually stunning and highly functional.
+                </p>
+            </div>
+            <div>
+                <img src="assets/profile/hemani.jpg" alt="Hemani"
+                    style="width: 100%; height: 500px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: 0 0 40px rgb(13, 0, 255), 0 15px 40px rgba(0, 0, 0, 0.1); border: 2px solid rgba(99, 91, 255, 0.3);">
+            </div>
+        </div>
+
 
         <!-- Personal Details -->
-        <div style="background: var(--c-light-gray); padding: 3rem; border-radius: var(--radius-md); max-width: 1000px; border: 1px solid var(--c-border);">
+
+        <h5 class="text-h1" style="margin-bottom: 2rem;">
+            PERSONAL DETAilS </h5>
+        <div
+            style="background: var(--c-light-gray); padding: 3rem; border-radius: var(--radius-md); max-width: 1000px; border: 1px solid var(--c-border);">
             <h3 class="text-h3" style="margin-bottom: 2rem; font-size: 1.25rem;">PERSONAL DETAILS</h3>
             <div class="grid grid-2" style="gap: 2rem;">
                 <div>
-                    <span class="label" style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Name</span>
+                    <span class="label"
+                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Name</span>
                     <p style="font-weight: 600; font-size: 1.1rem;">Hemani Vanvi</p>
                 </div>
                 <div>
-                    <span class="label" style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Location</span>
+                    <span class="label"
+                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Location</span>
                     <p style="font-weight: 600; font-size: 1.1rem;">Junagadh, Gujarat, India</p>
                 </div>
                 <div>
-                    <span class="label" style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Email</span>
-                    <p style="font-weight: 600; font-size: 1.1rem;"><a href="mailto:hemani@example.com" style="color: var(--c-violet);">[Your Email Address]</a></p>
+                    <span class="label"
+                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Email</span>
+                    <p style="font-weight: 600; font-size: 1.1rem;"><a href="mailto:hemani@example.com"
+                            style="color: var(--c-violet);">vanvihemani@gmail.com</a></p>
                 </div>
                 <div>
-                    <span class="label" style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Phone</span>
-                    <p style="font-weight: 600; font-size: 1.1rem;">+91 [Your Phone Number]</p>
+                    <span class="label"
+                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Phone</span>
+                    <p style="font-weight: 600; font-size: 1.1rem;">+91 87990 64426</p>
                 </div>
                 <div>
-                    <span class="label" style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Languages</span>
+                    <span class="label"
+                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Languages</span>
                     <p style="font-weight: 600; font-size: 1.1rem;">English, Hindi, Gujarati</p>
                 </div>
                 <div>
-                    <span class="label" style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Education</span>
+                    <span class="label"
+                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Education</span>
                     <p style="font-weight: 600; font-size: 1.1rem;">BCA, Noble University</p>
                 </div>
             </div>
@@ -127,7 +165,7 @@
                     <li>Figma</li>
                 </ul>
             </div>
-            
+
             <div class="split-center-x" id="split-x">×</div>
 
             <div class="split-panel split-dev">
@@ -155,17 +193,19 @@
         </div>
 
         <div class="cs-image reveal-img" style="margin-bottom: 4vw;">
-            <img src="dust-glow-mockup.jpg" alt="Dust & Glow Mockup">
+            <img src="assets/projects/10.jpg" alt="Dust & Glow Mockup">
         </div>
 
         <div class="cs-stage">
             <span class="cs-stage-num">01 / OVERVIEW</span>
             <h3 class="text-h3" style="margin-bottom: 2rem; max-width: 800px;">
-                Dust & Glow is a premium cosmetics platform designed to simplify beauty shopping by matching users with suitable products through intuitive UI and personalization.
+                Dust & Glow is a premium cosmetics platform designed to simplify beauty shopping by matching users with
+                suitable products through intuitive UI and personalization.
             </h3>
         </div>
 
-        <div class="cs-stage" style="background: var(--c-black); color: var(--c-white); padding: 5vw; border-radius: var(--radius-lg);">
+        <div class="cs-stage"
+            style="background: var(--c-black); color: var(--c-white); padding: 5vw; border-radius: var(--radius-lg);">
             <span class="cs-stage-num" style="color: var(--c-gray);">02 / THE PROBLEM</span>
             <h3 class="text-h2" style="margin-bottom: 2rem;">
                 ONLINE BEAUTY SHOPPING CAN FEEL UNCERTAIN.
@@ -182,9 +222,11 @@
             <div class="grid grid-2">
                 <div class="persona-card">
                     <h4 style="margin-bottom: 1rem;">GOALS</h4>
-                    <p style="color: var(--c-gray); margin-bottom: 2rem;">Find skincare for sensitive skin, quick checkout, read honest reviews.</p>
+                    <p style="color: var(--c-gray); margin-bottom: 2rem;">Find skincare for sensitive skin, quick
+                        checkout, read honest reviews.</p>
                     <h4 style="margin-bottom: 1rem;">PAIN POINTS</h4>
-                    <p style="color: var(--c-gray);">Overwhelmed by choices, hard to find shade matches, fake reviews.</p>
+                    <p style="color: var(--c-gray);">Overwhelmed by choices, hard to find shade matches, fake reviews.
+                    </p>
                 </div>
                 <div class="persona-card" style="background: var(--c-light-gray);">
                     <h4 style="margin-bottom: 1rem;">JOURNEY</h4>
@@ -198,12 +240,24 @@
             <!-- Gallery of Dust & Glow Screens -->
             <div class="gallery-horizontal">
                 <!-- Dust & Glow UI Screens -->
-                <div class="gallery-item"><a href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0" target="_blank"><img src="assets/projects/10.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0" target="_blank"><img src="assets/projects/38.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0" target="_blank"><img src="assets/projects/55.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0" target="_blank"><img src="assets/projects/73.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0" target="_blank"><img src="assets/projects/83.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0" target="_blank"><img src="assets/projects/105.jpg" alt="Dust & Glow Screen"></a></div>
+                <div class="gallery-item"><a
+                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
+                        target="_blank"><img src="assets/projects/10.jpg" alt="Dust & Glow Screen"></a></div>
+                <div class="gallery-item"><a
+                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
+                        target="_blank"><img src="assets/projects/38.jpg" alt="Dust & Glow Screen"></a></div>
+                <div class="gallery-item"><a
+                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
+                        target="_blank"><img src="assets/projects/55.jpg" alt="Dust & Glow Screen"></a></div>
+                <div class="gallery-item"><a
+                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
+                        target="_blank"><img src="assets/projects/73.jpg" alt="Dust & Glow Screen"></a></div>
+                <div class="gallery-item"><a
+                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
+                        target="_blank"><img src="assets/projects/83.jpg" alt="Dust & Glow Screen"></a></div>
+                <div class="gallery-item"><a
+                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
+                        target="_blank"><img src="assets/projects/105.jpg" alt="Dust & Glow Screen"></a></div>
             </div>
             <div style="margin-top: 2rem; text-align: center;">
                 <h3 style="font-size: 2rem; margin-bottom: 1rem;">DESIGNED IN FIGMA</h3>
@@ -220,8 +274,10 @@
         </div>
 
         <div class="cs-image reveal-img" style="height: 60vh; margin-bottom: 4rem;">
-            <img src="assets/projects/junagadh.jpg" alt="Tourism of Junagadh" style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; color: white;">
+            <img src="assets/projects/junagadh.jpg" alt="Tourism of Junagadh"
+                style="width: 100%; height: 100%; object-fit: cover;">
+            <div
+                style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; color: white;">
                 <h3 style="font-size: 3rem; text-transform: uppercase;">Discover Junagadh</h3>
             </div>
         </div>
@@ -229,17 +285,21 @@
         <div class="grid grid-2">
             <div>
                 <h3 class="text-h3" style="margin-bottom: 1rem;">PROJECT SCOPE</h3>
-                <p style="color: var(--c-gray);">A frontend web project showcasing the historical and cultural heritage of Junagadh and Girnar. The platform features an interactive gallery, famous places directory, and hotel booking layouts.</p>
+                <p style="color: var(--c-gray);">A frontend web project showcasing the historical and cultural heritage
+                    of Junagadh and Girnar. The platform features an interactive gallery, famous places directory, and
+                    hotel booking layouts.</p>
             </div>
             <div>
                 <h3 class="text-h3" style="margin-bottom: 1rem;">TECHNOLOGY</h3>
-                <p style="color: var(--c-gray);">HTML5, CSS3, JavaScript. Fully responsive implementation based on structured UI designs.</p>
+                <p style="color: var(--c-gray);">HTML5, CSS3, JavaScript. Fully responsive implementation based on
+                    structured UI designs.</p>
             </div>
         </div>
     </section>
 
     <!-- 08 DESIGN LAB -->
-    <section id="lab" class="section container" style="background: var(--c-light-gray); padding: 5vw; border-radius: var(--radius-lg); margin-bottom: 10vw;">
+    <section id="lab" class="section container"
+        style="background: var(--c-light-gray); padding: 5vw; border-radius: var(--radius-lg); margin-bottom: 10vw;">
         <div class="cs-header text-center">
             <h2 class="text-h1">DESIGN LAB</h2>
             <p style="color: var(--c-gray);">Frontend and UI interaction experiments.</p>
@@ -282,42 +342,72 @@
         <div class="grid grid-2">
             <div>
                 <h2 class="text-h1" style="margin-bottom: 2rem;">EDUCATION</h2>
-                
+
                 <!-- BCA -->
-                <div style="border-left: 2px solid var(--c-border); padding-left: 2rem; margin-bottom: 3rem; position: relative;">
-                    <div style="position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--c-violet);"></div>
+                <div
+                    style="border-left: 2px solid var(--c-border); padding-left: 2rem; margin-bottom: 3rem; position: relative;">
+                    <div
+                        style="position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--c-violet);">
+                    </div>
                     <h3 class="text-h3">BACHELOR OF COMPUTER APPLICATIONS</h3>
                     <p style="color: var(--c-gray); margin-bottom: 1rem;">NOBLE UNIVERSITY, JUNAGADH<br>2023 — 2026</p>
                     <div class="cgpa-badge">CGPA: 6.70</div>
                 </div>
 
                 <!-- 12th HSC -->
-                <div style="border-left: 2px solid var(--c-border); padding-left: 2rem; margin-bottom: 3rem; position: relative;">
-                    <div style="position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--c-border);"></div>
+                <div
+                    style="border-left: 2px solid var(--c-border); padding-left: 2rem; margin-bottom: 3rem; position: relative;">
+                    <div
+                        style="position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--c-blue); box-shadow: 0 0 12px var(--c-blue);">
+                    </div>
                     <h3 class="text-h3" style="font-size: 1.25rem;">12TH GRADE (HSC) — GENERAL</h3>
                     <p style="color: var(--c-gray); margin-bottom: 1rem;">GSEB BOARD, GANDHINAGAR<br>MARCH 2023</p>
-                    <div class="cgpa-badge" style="background: var(--c-light-gray); color: var(--c-black); border: 1px solid var(--c-border); box-shadow: none; animation: none; transform: none;">PERCENTILE: 84.69 PR</div>
+                    <div class="cgpa-badge"
+                        style="background: var(--c-light-gray); color: var(--c-black); border: 1px solid var(--c-border); box-shadow: none; animation: none; transform: none;">
+                        PERCENTILE: 84.69 PR</div>
                 </div>
 
                 <!-- 10th SSC -->
                 <div style="border-left: 2px solid var(--c-border); padding-left: 2rem; position: relative;">
-                    <div style="position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--c-border);"></div>
+                    <div
+                        style="position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: #10B981; box-shadow: 0 0 12px #10B981;">
+                    </div>
                     <h3 class="text-h3" style="font-size: 1.25rem;">10TH GRADE (SSC)</h3>
                     <p style="color: var(--c-gray); margin-bottom: 1rem;">GSEB BOARD, GANDHINAGAR<br>MAY 2021</p>
-                    <div class="cgpa-badge" style="background: var(--c-light-gray); color: var(--c-black); border: 1px solid var(--c-border); box-shadow: none; animation: none; transform: none;">PERCENTILE: 81.42 PR</div>
+                    <div class="cgpa-badge"
+                        style="background: var(--c-light-gray); color: var(--c-black); border: 1px solid var(--c-border); box-shadow: none; animation: none; transform: none;">
+                        PERCENTILE: 81.42 PR</div>
                 </div>
             </div>
-            
+
             <div>
                 <h3 class="text-h3">ACADEMIC PERFORMANCE</h3>
                 <p style="color: var(--c-gray);">0 BACKLOGS ALL SEMESTERS</p>
                 <div class="academic-chart" id="chart">
-                    <div class="chart-bar"><div class="chart-fill" data-height="64%"></div><span class="chart-value">6.42</span><span class="chart-label">SEM 1</span></div>
-                    <div class="chart-bar"><div class="chart-fill" data-height="54%"></div><span class="chart-value">5.42</span><span class="chart-label">SEM 2</span></div>
-                    <div class="chart-bar"><div class="chart-fill" data-height="62%"></div><span class="chart-value">6.22</span><span class="chart-label">SEM 3</span></div>
-                    <div class="chart-bar"><div class="chart-fill" data-height="72%"></div><span class="chart-value">7.20</span><span class="chart-label">SEM 4</span></div>
-                    <div class="chart-bar"><div class="chart-fill" data-height="78%"></div><span class="chart-value">7.82</span><span class="chart-label">SEM 5</span></div>
-                    <div class="chart-bar"><div class="chart-fill" data-height="71%"></div><span class="chart-value">7.17</span><span class="chart-label">SEM 6</span></div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" data-height="64%"></div><span class="chart-value">6.42</span><span
+                            class="chart-label">SEM 1</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" data-height="54%"></div><span class="chart-value">5.42</span><span
+                            class="chart-label">SEM 2</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" data-height="62%"></div><span class="chart-value">6.22</span><span
+                            class="chart-label">SEM 3</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" data-height="72%"></div><span class="chart-value">7.20</span><span
+                            class="chart-label">SEM 4</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" data-height="78%"></div><span class="chart-value">7.82</span><span
+                            class="chart-label">SEM 5</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-fill" data-height="71%"></div><span class="chart-value">7.17</span><span
+                            class="chart-label">SEM 6</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -345,18 +435,38 @@
             <div class="footer-grid">
                 <div>
                     <h2 class="text-h3" style="margin-bottom: 1rem;">HEMANI VANVI</h2>
-                    <p style="color: var(--c-gray);">UI/UX DESIGNER<br>FULL STACK DEVELOPER</p>
+                    <p style="color: var(--c-gray); margin-bottom: 2rem;">UI/UX DESIGNER<br>FULL STACK DEVELOPER</p>
+                    <div class="flex gap-4">
+                        <a href="#" style="color: var(--c-black); font-weight: 600;">LinkedIn</a>
+                        <a href="#" style="color: var(--c-black); font-weight: 600;">GitHub</a>
+                        <a href="#" style="color: var(--c-black); font-weight: 600;">Instagram</a>
+                    </div>
                 </div>
                 <div class="footer-nav">
+                    <p style="font-size: 10px; color: var(--c-gray); letter-spacing: 0.1em; margin-bottom: 1rem;">
+                        EXPLORE</p>
                     <a href="#work">WORK</a>
                     <a href="#about">ABOUT</a>
                     <a href="#skills">SKILLS</a>
                     <a href="#lab">LAB</a>
-                    <a href="#contact">CONTACT</a>
+                </div>
+                <div>
+                    <p style="font-size: 10px; color: var(--c-gray); letter-spacing: 0.1em; margin-bottom: 1rem;">
+                        CONTACT</p>
+                    <p style="font-weight: 600; margin-bottom: 0.5rem;"><a href="mailto:vanvihemani@gmail.com"
+                            style="color: var(--c-black);">vanvihemani@gmail.com</a></p>
+                    <p style="font-weight: 600; color: var(--c-black);">+91 87990 64426</p>
+                </div>
+                <div>
+                    <p style="font-size: 10px; color: var(--c-gray); letter-spacing: 0.1em; margin-bottom: 1rem;">
+                        LOCATION</p>
+                    <p style="font-weight: 600; color: var(--c-black);">Junagadh,<br>Gujarat, India</p>
                 </div>
             </div>
-            <div style="font-size: 12px; color: var(--c-gray); text-transform: uppercase;">
-                &copy; 2026 HEMANI VANVI
+            <div class="flex"
+                style="justify-content: space-between; font-size: 12px; color: var(--c-gray); text-transform: uppercase;">
+                <div>&copy; 2026 HEMANI VANVI</div>
+                <div>DESIGNED IN FIGMA. BUILT WITH CODE.</div>
             </div>
         </div>
     </footer>
@@ -364,4 +474,5 @@
     <!-- JS -->
     <script src="js/script.js"></script>
 </body>
+
 </html>
