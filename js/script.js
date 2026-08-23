@@ -1,9 +1,9 @@
 // Wait for DOM to load
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     // 1. Custom Cursor Logic
     const cursor = document.getElementById("custom-cursor");
-    
+
     // Only run if not on touch device
     if (window.matchMedia("(pointer: fine)").matches) {
         document.addEventListener("mousemove", (e) => {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const links = document.querySelectorAll("a, button");
         links.forEach(link => {
             link.addEventListener("mouseenter", () => {
-                if(link.classList.contains('btn')) {
+                if (link.classList.contains('btn')) {
                     cursor.classList.add("hover-cta");
                 } else {
                     cursor.classList.add("hover-link");
@@ -49,11 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial Hero Animation Timeline
     const tlHero = gsap.timeline();
     tlHero.from(".hero-availability", { y: -20, opacity: 0, duration: 0.8, ease: "power3.out", delay: 0.2 })
-          .from(".hero-title", { y: 40, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.5")
-          .from(".hero .label", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
-          .from(".hero-desc", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
-          .from(".hero .btn", { y: 20, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" }, "-=0.6")
-          .from(".workflow-card", { x: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "back.out(1.7)" }, "-=1");
+        .from(".hero-title", { y: 40, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.5")
+        .from(".hero .label", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+        .from(".hero-desc", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+        .from(".hero .btn", { y: 20, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" }, "-=0.6")
+        .from(".workflow-card", { x: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "back.out(1.7)" }, "-=1");
 
     // Split Screen Animation (DESIGN x DEVELOPMENT)
     const splitTl = gsap.timeline({
@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
             scrub: 1
         }
     });
-    
+
     splitTl.from(".split-design .split-list li", { x: -50, opacity: 0, stagger: 0.1 })
-           .from("#split-x", { scale: 0, opacity: 0, rotation: -90, duration: 0.5 }, "-=0.5")
-           .from(".split-dev .split-list li", { x: 50, opacity: 0, stagger: 0.1 }, "-=0.2");
+        .from("#split-x", { scale: 0, opacity: 0, rotation: -90, duration: 0.5 }, "-=0.5")
+        .from(".split-dev .split-list li", { x: 50, opacity: 0, stagger: 0.1 }, "-=0.2");
 
     // Image Reveal Animations
     gsap.utils.toArray(".reveal-img").forEach(container => {
@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Fade up sections generally
     gsap.utils.toArray(".section").forEach(section => {
-        if(section.id === "split-screen") return; // Skip custom animated section
-        
+        if (section.id === "split-screen") return; // Skip custom animated section
+
         gsap.from(section, {
             scrollTrigger: {
                 trigger: section,
@@ -110,19 +110,5 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power3.out"
         });
     });
-
-    // Theme Toggle Logic
-    const themeToggle = document.getElementById("theme-toggle");
-    if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-            const currentTheme = document.documentElement.getAttribute("data-theme");
-            if (currentTheme === "dark") {
-                document.documentElement.removeAttribute("data-theme");
-                themeToggle.textContent = "☾"; // Moon icon for light mode
-            } else {
-                document.documentElement.setAttribute("data-theme", "dark");
-                themeToggle.textContent = "☀"; // Sun icon for dark mode
-            }
-        });
-    }
 });
+>>>>>>>>> Temporary merge branch 2
