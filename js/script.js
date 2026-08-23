@@ -111,4 +111,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
->>>>>>>>> Temporary merge branch 2
+

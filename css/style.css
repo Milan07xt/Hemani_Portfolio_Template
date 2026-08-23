@@ -713,28 +713,38 @@ h6 {
   position: relative;
   overflow: hidden;
   border: 1px solid transparent;
-  box-shadow: var(--shadow-subtle);
   transition: all 0.3s ease;
+  animation: neon-pulse-inset 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes neon-pulse-inset {
+  0% { box-shadow: 0 0 10px var(--neon-color), inset 0 0 2px var(--neon-color); }
+  100% { box-shadow: 0 0 35px var(--neon-color), inset 0 0 12px var(--neon-color); }
+}
+
+@keyframes neon-pulse {
+  0% { box-shadow: 0 5px 15px var(--neon-color); }
+  100% { box-shadow: 0 15px 40px var(--neon-color); }
 }
 
 .lab-item:nth-child(1) {
-  border-color: rgb(0, 191, 255);
-  box-shadow: 0 0 30px rgb(0, 191, 255);
+  --neon-color: rgba(0, 191, 255, 0.4);
+  border-color: rgba(0, 191, 255, 0.4);
 }
 
 .lab-item:nth-child(2) {
-  border-color: rgb(247, 2, 133);
-  box-shadow: 0 0 30px rgb(247, 2, 133);
+  --neon-color: rgba(255, 20, 147, 0.4);
+  border-color: rgba(255, 20, 147, 0.4);
 }
 
 .lab-item:nth-child(3) {
-  border-color: rgb(39, 255, 1);
-  box-shadow: 0 0 30px rgb(39, 255, 1);
+  --neon-color: rgba(57, 255, 20, 0.4);
+  border-color: rgba(57, 255, 20, 0.4);
 }
 
 .lab-item:nth-child(4) {
-  border-color: rgb(255, 217, 0);
-  box-shadow: 0 0 30px rgb(255, 217, 0);
+  --neon-color: rgba(255, 215, 0, 0.4);
+  border-color: rgba(255, 215, 0, 0.4);
 }
 
 .lab-label {
@@ -892,8 +902,8 @@ h6 {
   font-weight: 800;
   letter-spacing: 0.05em;
   position: relative;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  animation: badgeFloat 4s ease-in-out infinite;
+  --neon-color: rgba(99, 91, 255, 0.6);
+  animation: badgeFloat 4s ease-in-out infinite, neon-pulse 2.5s infinite alternate ease-in-out;
 }
 
 .cgpa-badge::before {
