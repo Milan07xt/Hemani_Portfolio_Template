@@ -40,6 +40,7 @@
             <a href="#" class="nav-brand">Hemani</a>
             <div class="nav-links">
                 <a href="#work" class="nav-link active">Work</a>
+                <a href="#posters" class="nav-link">Posters</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#lab" class="nav-link">Lab</a>
@@ -311,6 +312,285 @@
         </div>
     </section>
 
+    <!-- 08 CANVAS POSTER STUDIO & EXHIBITION -->
+    <section id="posters" class="section container canvas-poster-section" style="margin-top: 4vw; margin-bottom: 5vw;">
+        <div class="cs-header text-center">
+            <span class="label">Interactive Generative Design</span>
+            <h2 class="text-h1">CANVAS POSTER STUDIO</h2>
+            <p style="font-size: 1.25rem; color: var(--c-gray); max-width: 750px; margin: 0 auto 3rem;">
+                Where algorithmic code creates dynamic visual art. Explore live generative canvas posters, customize parameters, or generate & export your own high-resolution poster print.
+            </p>
+        </div>
+
+        <!-- Live Interactive Poster Generator Studio -->
+        <div class="poster-studio-grid">
+            <!-- Left: Interactive Canvas Poster Display -->
+            <div class="poster-display-container">
+                <div class="poster-museum-frame" id="poster-frame">
+                    <!-- Poster Swiss Header -->
+                    <div class="poster-header-bar">
+                        <div class="poster-tag">HEMANI VANVI // VISUAL LAB</div>
+                        <div class="poster-badge-edition">EDITION 2026 // POSTER NO. 08</div>
+                        <div class="poster-coords">21.52°N 70.45°E</div>
+                    </div>
+
+                    <!-- Canvas Container -->
+                    <div class="canvas-viewport" id="canvas-viewport">
+                        <canvas id="interactive-poster-canvas" width="600" height="800"></canvas>
+                        <!-- Dynamic HUD / Swiss Typography Overlay Elements -->
+                        <div class="canvas-poster-hud">
+                            <div class="hud-top-left">
+                                <span class="hud-mono-code">GEN_ART // SYS_2.6</span>
+                                <h3 class="hud-poster-title" id="hud-poster-title">NEON SYNTHESIS</h3>
+                                <p class="hud-poster-sub" id="hud-poster-sub">ALGORITHMIC FLUIDITY & CHROMATIC CURVES</p>
+                            </div>
+                            <div class="hud-bottom-row">
+                                <div class="hud-col">
+                                    <span class="hud-label">FREQUENCY</span>
+                                    <span class="hud-val" id="hud-freq-val">1.42 GHZ</span>
+                                </div>
+                                <div class="hud-col">
+                                    <span class="hud-label">PARTICLES</span>
+                                    <span class="hud-val" id="hud-count-val">120 NODES</span>
+                                </div>
+                                <div class="hud-barcode">
+                                    <div class="barcode-bars"></div>
+                                    <span>VANVI.DESIGN // 2026</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mouse Interaction Hint -->
+                        <div class="canvas-interaction-hint">
+                            <span>✦ MOVE CURSOR & CLICK TO WARP PARTICLES</span>
+                        </div>
+                    </div>
+
+                    <!-- Poster Swiss Footer -->
+                    <div class="poster-footer-bar">
+                        <div class="poster-footer-left">SWISS AVANT-GARDE × CREATIVE COMPUTING</div>
+                        <div class="poster-footer-right">HTML5 CANVAS // 60 FPS REALTIME</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Studio Controls Panel -->
+            <div class="poster-controls-panel">
+                <div class="controls-card">
+                    <div class="controls-header">
+                        <div class="controls-title">
+                            <span class="dot-indicator"></span>
+                            <h3>POSTER GENERATOR CONTROLS</h3>
+                        </div>
+                        <span class="controls-version">v2.4</span>
+                    </div>
+
+                    <!-- 1. Style Presets -->
+                    <div class="control-group">
+                        <label class="control-label">01 // SELECT GENERATIVE MODE</label>
+                        <div class="mode-buttons-grid">
+                            <button class="mode-btn active" data-mode="fluid">
+                                <span class="mode-icon">⚡</span>
+                                <span class="mode-name">Neon Fluid</span>
+                            </button>
+                            <button class="mode-btn" data-mode="matrix">
+                                <span class="mode-icon">🌐</span>
+                                <span class="mode-name">Cyber Matrix</span>
+                            </button>
+                            <button class="mode-btn" data-mode="kinetic">
+                                <span class="mode-icon">🔤</span>
+                                <span class="mode-name">Kinetic Typo</span>
+                            </button>
+                            <button class="mode-btn" data-mode="aurora">
+                                <span class="mode-icon">✨</span>
+                                <span class="mode-name">Aurora Mesh</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 2. Color Themes -->
+                    <div class="control-group">
+                        <label class="control-label">02 // CHROMATIC PALETTE</label>
+                        <div class="palette-swatches">
+                            <button class="palette-btn active" data-theme="violet" title="Hyper Violet" style="--c1: #7C6AFF; --c2: #FF6AC1; --c3: #00D4FF;">
+                                <span class="swatch-preview"></span>
+                                <span>Violet Glow</span>
+                            </button>
+                            <button class="palette-btn" data-theme="cyan" title="Cyber Cyan" style="--c1: #00D4FF; --c2: #00E5CC; --c3: #3B82F6;">
+                                <span class="swatch-preview"></span>
+                                <span>Cyber Cyan</span>
+                            </button>
+                            <button class="palette-btn" data-theme="amber" title="Sunset Amber" style="--c1: #FF9E00; --c2: #FF1493; --c3: #FFD700;">
+                                <span class="swatch-preview"></span>
+                                <span>Sunset Amber</span>
+                            </button>
+                            <button class="palette-btn" data-theme="emerald" title="Acid Emerald" style="--c1: #00FF88; --c2: #00E5CC; --c3: #39FF14;">
+                                <span class="swatch-preview"></span>
+                                <span>Acid Emerald</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Sliders: Complexity & Speed -->
+                    <div class="control-group">
+                        <div class="slider-row">
+                            <label for="speed-slider" class="control-label">03 // FLOW DYNAMICS</label>
+                            <span id="speed-display" class="slider-val">1.0x</span>
+                        </div>
+                        <input type="range" id="speed-slider" min="0.2" max="2.5" step="0.1" value="1.0" class="poster-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="slider-row">
+                            <label for="density-slider" class="control-label">04 // COMPLEXITY & DENSITY</label>
+                            <span id="density-display" class="slider-val">Medium</span>
+                        </div>
+                        <input type="range" id="density-slider" min="1" max="3" step="1" value="2" class="poster-slider">
+                    </div>
+
+                    <!-- Action Controls -->
+                    <div class="poster-actions-group">
+                        <button id="btn-randomize-poster" class="btn btn-secondary poster-action-btn">
+                            <span>🎲</span> Randomize Seed
+                        </button>
+                        <button id="btn-download-poster" class="btn btn-primary poster-action-btn poster-download-glow">
+                            <span>📸</span> Download Poster (PNG)
+                        </button>
+                    </div>
+
+                    <div class="poster-info-note">
+                        <span class="info-icon">ℹ</span>
+                        <span>Clicking <b>Download Poster</b> renders a high-res, print-ready PNG with Swiss typography and framing directly from the canvas.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Curated Canvas Poster Exhibition Series -->
+        <div class="poster-exhibition-section" style="margin-top: 5vw;">
+            <div class="cs-header text-center" style="margin-bottom: 2.5rem;">
+                <span class="label">Featured Gallery</span>
+                <h3 class="text-h2">CURATED CANVAS POSTERS</h3>
+                <p style="color: var(--c-gray);">A visual design exploration of typography, 3D fluid forms, and generative geometry.</p>
+            </div>
+
+            <div class="poster-gallery-grid">
+                <!-- Poster Card 1 -->
+                <div class="poster-card" data-tilt data-title="NEON SYNTHESIS" data-category="Generative Swiss Geometry" data-src="assets/posters/poster-cyber.jpg" data-desc="Modern Swiss-style geometric abstraction exploring digital structure, cyber glow gradients & high-density typography.">
+                    <div class="poster-img-wrapper">
+                        <img src="assets/posters/poster-cyber.jpg" alt="Neon Synthesis Swiss Poster" loading="lazy">
+                        <div class="poster-overlay">
+                            <button class="poster-zoom-btn" aria-label="Zoom poster"><span>🔍 Full View</span></button>
+                        </div>
+                    </div>
+                    <div class="poster-card-meta">
+                        <div class="poster-num">01 / GEOMETRY</div>
+                        <h4 class="poster-name">NEON SYNTHESIS</h4>
+                        <p class="poster-desc">Modern Swiss-style geometric abstractions with cyber glow vectors.</p>
+                        <div class="poster-tags">
+                            <span>Swiss Style</span>
+                            <span>Vector Neon</span>
+                            <span>Exhibition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poster Card 2 -->
+                <div class="poster-card" data-tilt data-title="ULTRA MODERN FLUID" data-category="Holographic Liquid Glass" data-src="assets/posters/poster-fluid.jpg" data-desc="Iridescent holographic liquid chrome forms and spherical refractions on dark editorial grid with luminous gradients.">
+                    <div class="poster-img-wrapper">
+                        <img src="assets/posters/poster-fluid.jpg" alt="Ultra Modern Liquid Chrome Poster" loading="lazy">
+                        <div class="poster-overlay">
+                            <button class="poster-zoom-btn" aria-label="Zoom poster"><span>🔍 Full View</span></button>
+                        </div>
+                    </div>
+                    <div class="poster-card-meta">
+                        <div class="poster-num">02 / LIQUID 3D</div>
+                        <h4 class="poster-name">ULTRA MODERN FLUID</h4>
+                        <p class="poster-desc">Iridescent holographic liquid chrome with spherical chromatic refractions.</p>
+                        <div class="poster-tags">
+                            <span>Liquid Chrome</span>
+                            <span>Holographic</span>
+                            <span>3D Art</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poster Card 3 -->
+                <div class="poster-card" data-tilt data-title="ARCHITECTURAL KINETICS" data-category="Avant-Garde Typography" data-src="assets/posters/poster-kinetic.jpg" data-desc="Avant-garde Swiss typography with kinetic wave disruptions and architectural brutalist composition.">
+                    <div class="poster-img-wrapper">
+                        <img src="assets/posters/poster-kinetic.jpg" alt="Architectural Kinetics Poster" loading="lazy">
+                        <div class="poster-overlay">
+                            <button class="poster-zoom-btn" aria-label="Zoom poster"><span>🔍 Full View</span></button>
+                        </div>
+                    </div>
+                    <div class="poster-card-meta">
+                        <div class="poster-num">03 / TYPOGRAPHY</div>
+                        <h4 class="poster-name">ARCHITECTURAL KINETICS</h4>
+                        <p class="poster-desc">Avant-garde kinetic wave disruptions with bold Swiss brutalist layout.</p>
+                        <div class="poster-tags">
+                            <span>Kinetic Typo</span>
+                            <span>Swiss Poster</span>
+                            <span>Basel 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poster Card 4: Sun Cream Advertising Poster -->
+                <div class="poster-card" data-tilt data-title="SOLARIS UV SHIELD SPF 50+" data-category="Luxury Skincare & Canva Ad Poster" data-src="assets/posters/poster-sunscreen-solaris.jpg" data-desc="Minimalist luxury Canva advertising poster for SOLARIS SPF 50+ Sun Cream with golden hour reflections, glass bottle aesthetics, and Swiss editorial typography.">
+                    <div class="poster-img-wrapper">
+                        <img src="assets/posters/poster-sunscreen-solaris.jpg" alt="Solaris Sun Cream Canva Poster" loading="lazy">
+                        <div class="poster-overlay">
+                            <button class="poster-zoom-btn" aria-label="Zoom poster"><span>🔍 Full View</span></button>
+                        </div>
+                    </div>
+                    <div class="poster-card-meta">
+                        <div class="poster-num">04 / COMMERCIAL AD</div>
+                        <h4 class="poster-name">SOLARIS UV SHIELD</h4>
+                        <p class="poster-desc">Luxury skincare Canva poster with golden sunlight & editorial typography.</p>
+                        <div class="poster-tags">
+                            <span>Sun Cream</span>
+                            <span>SPF 50+</span>
+                            <span>Canva Ad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Poster Lightbox Modal -->
+    <div id="poster-lightbox-modal" class="poster-modal" aria-hidden="true">
+        <div class="poster-modal-backdrop"></div>
+        <div class="poster-modal-dialog">
+            <button class="poster-modal-close" id="poster-modal-close" aria-label="Close modal">×</button>
+            <div class="poster-modal-content">
+                <div class="poster-modal-image-col">
+                    <img id="modal-poster-img" src="" alt="Poster Full View">
+                </div>
+                <div class="poster-modal-info-col">
+                    <span class="label" id="modal-poster-cat">GENERATIVE DESIGN</span>
+                    <h3 class="text-h2" id="modal-poster-title" style="margin: 0.5rem 0 1rem;">POSTER TITLE</h3>
+                    <p id="modal-poster-desc" style="color: var(--c-gray); line-height: 1.7; margin-bottom: 2rem;">Description of the poster design and typography exploration.</p>
+                    <div class="poster-modal-specs">
+                        <div class="spec-item">
+                            <span class="spec-lbl">FORMAT</span>
+                            <span class="spec-val">3:4 Museum Poster Print</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-lbl">TOOLS</span>
+                            <span class="spec-val">HTML5 Canvas, Figma, WebGL</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-lbl">DESIGNER</span>
+                            <span class="spec-val">Hemani Vanvi</span>
+                        </div>
+                    </div>
+                    <a id="modal-download-link" href="#" download class="btn" style="margin-top: 2rem; width: 100%; text-align: center; display: inline-block;">Download High-Res Poster ↗</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 08 DESIGN LAB -->
     <section id="lab" class="section container"
         style="background: var(--c-light-gray); padding: 5vw; border-radius: var(--radius-lg); margin-bottom: 4vw;">
@@ -459,6 +739,7 @@
                     <p style="font-size: 10px; color: var(--c-gray); letter-spacing: 0.1em; margin-bottom: 1rem;">
                         EXPLORE</p>
                     <a href="#work">WORK</a>
+                    <a href="#posters">POSTERS</a>
                     <a href="#about">ABOUT</a>
                     <a href="#skills">SKILLS</a>
                     <a href="#lab">LAB</a>
