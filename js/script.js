@@ -37,21 +37,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
     if (themeToggle) {
         const currentTheme = localStorage.getItem("theme");
-        if (currentTheme === "dark") {
-            document.documentElement.setAttribute("data-theme", "dark");
+        if (currentTheme === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+            themeToggle.innerHTML = "☾";
+        } else {
             themeToggle.innerHTML = "☀";
         }
 
         themeToggle.addEventListener("click", () => {
-            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-            if (isDark) {
+            const isLight = document.documentElement.getAttribute("data-theme") === "light";
+            if (isLight) {
+                document.documentElement.removeAttribute("data-theme");
+                localStorage.setItem("theme", "dark");
+                themeToggle.innerHTML = "☀";
+            } else {
                 document.documentElement.setAttribute("data-theme", "light");
                 localStorage.setItem("theme", "light");
                 themeToggle.innerHTML = "☾";
-            } else {
-                document.documentElement.setAttribute("data-theme", "dark");
-                localStorage.setItem("theme", "dark");
-                themeToggle.innerHTML = "☀";
             }
         });
     }
