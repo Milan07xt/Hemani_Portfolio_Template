@@ -19,7 +19,7 @@
   /* Typography */
   --font-main: 'Space Grotesk', sans-serif;
   --font-display: 'Syne', sans-serif;
-  --font-size-hero: clamp(4rem, 9vw, 10rem);
+  --font-size-hero: clamp(2.75rem, 5.2vw, 5.5rem);
   --font-size-h1: clamp(3rem, 6vw, 6rem);
   --font-size-h2: clamp(2rem, 4vw, 3.5rem);
   --font-size-h3: clamp(1.2rem, 2vw, 1.8rem);
@@ -189,6 +189,12 @@ h6 {
   line-height: 1.1;
   text-transform: uppercase;
   margin-bottom: 2rem;
+}
+
+.hero-title {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
 }
 
 .text-h1 {
@@ -425,7 +431,8 @@ h6 {
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  transform: translateZ(10px);
 }
 
 .hero-availability {
@@ -465,9 +472,9 @@ h6 {
   border-radius: 50%;
   object-fit: cover;
   vertical-align: middle;
-  margin: 0 1rem;
-  border: 4px solid var(--c-white);
-  box-shadow: 0 0 30px rgb(0, 213, 255), 0 0 60px rgb(0, 213, 255);
+  margin: 0 0.8rem;
+  border: 3px solid var(--c-white);
+  box-shadow: 0 0 20px rgba(0, 213, 255, 0.7), 0 0 45px rgba(0, 213, 255, 0.4);
   display: inline-block;
   animation: floatAvatar 6s ease-in-out infinite, glowAvatar 3s ease-in-out infinite alternate;
 }
@@ -504,6 +511,7 @@ h6 {
   height: 600px;
   pointer-events: none;
   perspective: 1000px;
+  z-index: 0;
 }
 
 .workflow-card {
@@ -1254,7 +1262,8 @@ h6 {
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 0; /* Keep behind content */
+  z-index: 0;
+  /* Keep behind content */
   mix-blend-mode: screen;
 }
 
@@ -1263,7 +1272,8 @@ h6 {
   position: fixed;
   inset: 0;
   overflow: hidden;
-  z-index: -2; /* Deep background */
+  z-index: -2;
+  /* Deep background */
   pointer-events: none;
 }
 
@@ -1305,18 +1315,35 @@ h6 {
 }
 
 @keyframes blobFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(5vw, -5vh) scale(1.1); }
-  66% { transform: translate(-5vw, 5vh) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(5vw, -5vh) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-5vw, 5vh) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 /* 3. Interactive Hover Lighting on Cards */
-.workflow-card, .gallery-item, .persona-card, .lab-item {
+.workflow-card,
+.gallery-item,
+.persona-card,
+.lab-item {
   position: relative;
 }
 
-.workflow-card::before, .gallery-item::before, .persona-card::before, .lab-item::before {
+.workflow-card::before,
+.gallery-item::before,
+.persona-card::before,
+.lab-item::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1330,7 +1357,10 @@ h6 {
   z-index: 10;
 }
 
-.workflow-card:hover::before, .gallery-item:hover::before, .persona-card:hover::before, .lab-item:hover::before {
+.workflow-card:hover::before,
+.gallery-item:hover::before,
+.persona-card:hover::before,
+.lab-item:hover::before {
   opacity: 1;
 }
 
@@ -1345,7 +1375,8 @@ h6 {
   border-color: rgba(124, 106, 255, 0.5);
 }
 
-.text-hero, .text-h1 {
+.text-hero,
+.text-h1 {
   text-shadow: 0 0 20px rgba(124, 106, 255, 0.1);
 }
 
@@ -1354,10 +1385,15 @@ h6 {
   .cursor-spotlight {
     display: none !important;
   }
+
   .ambient-blobs {
     display: none !important;
   }
-  .workflow-card::before, .gallery-item::before, .persona-card::before, .lab-item::before {
+
+  .workflow-card::before,
+  .gallery-item::before,
+  .persona-card::before,
+  .lab-item::before {
     display: none !important;
   }
 }
@@ -1366,6 +1402,7 @@ h6 {
   .blob {
     animation: none !important;
   }
+
   .cursor-spotlight {
     display: none !important;
   }
