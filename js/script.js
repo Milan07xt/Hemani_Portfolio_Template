@@ -1,14 +1,35 @@
 // Wait for DOM to load
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 1. Custom Cursor Logic
+    // 1. Custom Cursor & Spotlight Logic
     const cursor = document.getElementById("custom-cursor");
+    const spotlight = document.getElementById("cursor-spotlight");
 
     // Only run if not on touch device
     if (window.matchMedia("(pointer: fine)").matches) {
         document.addEventListener("mousemove", (e) => {
             cursor.style.left = e.clientX + "px";
             cursor.style.top = e.clientY + "px";
+            
+            if (spotlight) {
+                // Use a slightly delayed animation for the spotlight
+                spotlight.animate({
+                    left: `${e.clientX}px`,
+                    top: `${e.clientY}px`
+                }, { duration: 500, fill: "forwards" });
+            }
+        });
+
+        // Interactive Card Lighting
+        const interactiveCards = document.querySelectorAll(".workflow-card, .gallery-item, .persona-card, .lab-item");
+        interactiveCards.forEach(card => {
+            card.addEventListener("mousemove", e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            });
         });
 
         const links = document.querySelectorAll("a, button");
