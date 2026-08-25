@@ -1,0 +1,64 @@
+[
+    {
+        "name": "AI Portfolio Assistant",
+        "description": "A professional AI assistant built with FastAPI and OpenAI that understands the portfolio context and answers visitor questions dynamically.",
+        "technologies": [
+            "Python",
+            "FastAPI",
+            "OpenAI",
+            "JS",
+            "CSS"
+        ],
+        "live_demo": "",
+        "code_link": ""
+    },
+    {
+        "name": "Face Recognition Attendance System",
+        "description": "Attendance system that recognizes faces in real time and logs records through a Django REST API.",
+        "technologies": [
+            "Python",
+            "Django",
+            "OpenCV",
+            "REST API",
+            "SQLite",
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "live_demo": "https://face-detection-attendance-woad.vercel.app/home/",
+        "code_link": "https://github.com/Milan07xt/SEM-06"
+    },
+    {
+        "name": "Gym Management System",
+        "description": "Django-based system for managing gym memberships, plans and payment tracking.",
+        "technologies": [
+            "Python",
+            "Django",
+            "SQLite3"
+        ],
+        "live_demo": "https://django-gym-management-system-websit-one.vercel.app/",
+        "code_link": "https://github.com/Milan07xt/Django-Gym-Management-System-Website"
+    },
+    {
+        "name": "Hotel Management Website",
+        "description": "Responsive hotel booking website built with HTML, CSS and JavaScript.",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "live_demo": "https://hotel-website-project-kappa.vercel.app/index.html",
+        "code_link": "https://github.com/Milan07xt/Hotel-Website-Project"
+    },
+    {
+        "name": "Organic Farming Website",
+        "description": "Website built as a personal project. Mentioned in portfolio.",
+        "technologies": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "live_demo": "",
+        "code_link": ""
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Self-Directed Python/Django Specialization",
+        "organization": "Independent Studies & Projects",
+        "duration": "2025 - Present",
+        "description": "Designed and built 4 end-to-end backend applications including a real-time Face Recognition Attendance System using OpenCV and Django REST Framework, membership-management software, and custom SQLite database integrations."
+    },
+    {
+        "title": "Open Source Contributor",
+        "organization": "GitHub Community",
+        "duration": "2024 - 2025",
+        "description": "Created and documented utility tools, sharing SEM-06 projects, writing API structures, and learning standard Git/GitHub collaborative workflows."
+    }
+]

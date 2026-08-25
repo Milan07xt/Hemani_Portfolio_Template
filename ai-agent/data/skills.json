@@ -1,0 +1,52 @@
+{
+    "Languages & Frameworks": [
+        {
+            "name": "Python",
+            "proficiency": "90%"
+        },
+        {
+            "name": "Django",
+            "proficiency": "85%"
+        },
+        {
+            "name": "Django REST Framework",
+            "proficiency": "80%"
+        },
+        {
+            "name": "JavaScript",
+            "proficiency": "75%"
+        },
+        {
+            "name": "HTML5 / CSS3",
+            "proficiency": "85%"
+        }
+    ],
+    "Databases & Vision": [
+        {
+            "name": "SQL / SQLite3",
+            "proficiency": "80%"
+        },
+        {
+            "name": "REST API Design",
+            "proficiency": "85%"
+        },
+        {
+            "name": "OpenCV (CV & AI)",
+            "proficiency": "75%"
+        }
+    ],
+    "Developer Tools": [
+        {
+            "name": "Git / GitHub",
+            "proficiency": "85%"
+        },
+        {
+            "name": "VS Code",
+            "proficiency": "90%"
+        },
+        {
+            "name": "Linux Command Line",
+            "proficiency": "70%"
+        }
+    ]
+}

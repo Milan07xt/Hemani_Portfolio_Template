@@ -1,0 +1,71 @@
+[
+    {
+        "name": "QuizOff 2026: India's Biggest AI Quiz",
+        "issuer": "Unstop \u2022 CampusCrew",
+        "tags": [
+            "AI Quiz",
+            "Unstop"
+        ]
+    },
+    {
+        "name": "AI For Brand Storytelling Using ChatGPT",
+        "issuer": "Udemy \u2022 ExpertEase Global",
+        "tags": [
+            "ChatGPT",
+            "AI"
+        ]
+    },
+    {
+        "name": "Microsoft Copilot and 10+ AI Assistants",
+        "issuer": "Udemy",
+        "tags": [
+            "Copilot",
+            "AI"
+        ]
+    },
+    {
+        "name": "Tata Cybersecurity Analyst Job Simulation",
+        "issuer": "Forage \u00d7 Tata",
+        "tags": [
+            "Cyber Security",
+            "IAM"
+        ]
+    },
+    {
+        "name": "Windows Command Mastery for Ethical Hackers",
+        "issuer": "Udemy",
+        "tags": [
+            "Windows",
+            "Command Line"
+        ]
+    },
+    {
+        "name": "Information Security Analyst",
+        "issuer": "Skill India Digital Hub \u2022 NASSCOM",
+        "tags": [
+            "Cyber Security"
+        ]
+    },
+    {
+        "name": "Network Security Engineer",
+        "issuer": "Skill India Digital Hub \u2022 NASSCOM",
+        "tags": [
+            "Networking"
+        ]
+    },
+    {
+        "name": "IoT Security Analyst",
+        "issuer": "Skill India Digital Hub \u2022 NASSCOM",
+        "tags": [
+            "IoT"
+        ]
+    },
+    {
+        "name": "AI DevOps Analyst",
+        "issuer": "Skill India Digital Hub \u2022 NASSCOM",
+        "tags": [
+            "AI",
+            "DevOps"
+        ]
+    }
+]

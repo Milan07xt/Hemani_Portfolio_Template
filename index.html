@@ -4,489 +4,1598 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👤 Hemani Vanvi — UI/UX Designer & Full Stack Developer</title>
+    <title>Milan Rathod — Python Developer</title>
+    <meta name="description"
+        content="Milan Rathod — Python Developer specializing in Django, REST APIs, backend systems, and AI/ML applications. B.Sc. IT graduate from Gujarat, India.">
+    <meta name="keywords"
+        content="Milan Rathod, Python Developer, Django, REST API, Backend Developer, Gujarat, India, Portfolio">
+    <meta name="author" content="Milan Rathod">
+    <meta property="og:title" content="Milan Rathod — Python Developer Portfolio">
+    <meta property="og:description" content="Building clean, scalable & intelligent digital solutions with Python.">
+    <meta property="og:type" content="website">
 
-    <!-- Fonts -->
+    <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- GSAP for Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ai-agent-widget.css">
 </head>
 
 <body>
 
-    <!-- Custom Cursor -->
-    <div class="custom-cursor" id="custom-cursor"></div>
-    <div class="cursor-spotlight" id="cursor-spotlight"></div>
-
-    <!-- Ambient Background Blobs -->
-    <div class="ambient-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+    <!-- Ambient Background -->
+    <div class="ambient-bg" aria-hidden="true">
+        <div class="sweep-light"></div>
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+        <div class="ambient-orb orb-4"></div>
     </div>
 
-    <!-- 01 NAVIGATION -->
-    <nav class="nav-wrapper" id="nav">
-        <div class="nav">
-            <a href="#" class="nav-brand">Hemani</a>
-            <div class="nav-links">
-                <a href="#work" class="nav-link active">Work</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#lab" class="nav-link">Lab</a>
+    <!-- Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Mouse Glow -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+
+
+    <!-- ═══════════════════════════════════════
+             NAVBAR
+        ═══════════════════════════════════════ -->
+    <header class="nav-header" id="navHeader">
+        <nav class="navbar-pill" role="navigation" aria-label="Main navigation">
+            <div class="nav-logo">
+                <span class="nav-logo-icon">⟨/⟩</span>
+                <span class="nav-logo-text">Milan</span>
             </div>
-            <div class="flex items-center" style="gap: 1rem;">
-                <button id="theme-toggle"
-                    style="border-radius: 50%; width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; border: 1px solid var(--c-border); background: var(--c-white); color: var(--c-black); transition: var(--transition);">
-                    ☾
+
+            <ul class="nav-links" id="navLinks" role="list">
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+                <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
+                <li><a href="#certificates" class="nav-link" data-section="certificates">Certificates</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
                 </button>
-                <a href="#contact" class="btn">Contact ↗</a>
+                <button class="recruiter-mode-btn btn-liquid" id="recruiterModeBtn" aria-label="Toggle Recruiter Mode">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Recruiter Mode</span>
+                </button>
+                <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+    </header>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+        <div class="mobile-drawer-inner">
+            <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close navigation">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <ul class="mobile-nav-list" role="list">
+                <li><a href="#home" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#about" class="mobile-nav-link"><i class="fa-solid fa-user"></i> About</a></li>
+                <li><a href="#skills" class="mobile-nav-link"><i class="fa-solid fa-code"></i> Skills</a></li>
+                <li><a href="#projects" class="mobile-nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a>
+                </li>
+                <li><a href="#experience" class="mobile-nav-link"><i class="fa-solid fa-timeline"></i>
+                        Experience</a></li>
+                <li><a href="#education" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i>
+                        Education</a></li>
+                <li><a href="#certificates" class="mobile-nav-link"><i class="fa-solid fa-award"></i>
+                        Certificates</a></li>
+                <li><a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+            </ul>
+            <div class="mobile-social-links">
+                <a href="https://github.com/Milan07xt" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/milan-rathod07/" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:rathodmilan216@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
-    </nav>
+    </div>
 
-    <!-- 02 HERO -->
-    <section class="section hero container">
-        <div class="hero-content">
-            <div class="hero-availability">Available for selected opportunities</div>
-            <h1 class="text-hero hero-title">
-                Hello,<br>I'm Hemani
-            </h1>
-            <h2 class="label">UI/UX Designer + Full Stack Developer</h2>
+    <!-- ═══════════════════════════════════════
+             HERO SECTION
+        ═══════════════════════════════════════ -->
+    <section id="home" class="hero-section">
+        <div class="hero-grid">
 
-            <p class="hero-desc" style="margin-top: 2rem;">
-                I design intuitive digital experiences and build modern web products where design meets technology.
-            </p>
-            <div class="flex gap-4">
-                <a href="#work" class="btn" style="margin-right: 1rem;">View My Work →</a>
-                <a href="#contact" class="btn btn-secondary">Let's Talk ↗</a>
-            </div>
-        </div>
+            <!-- LEFT: Text Content -->
+            <div class="hero-content">
+                <div class="hero-badge reveal-fade" style="--delay:0.1s">
+                    <span class="badge-dot"></span>
+                    PYTHON DEVELOPER
+                </div>
 
-        <div class="hero-center-visual">
-            <img src="assets/profile/hemani.jpg" alt="Hemani" class="hero-avatar">
-        </div>
+                <h1 class="hero-title reveal-fade" style="--delay:0.2s">
+                    Hi, I'm <span class="gradient-name">Milan Rathod</span>
+                </h1>
 
-        <div class="hero-visual" id="hero-visual">
-            <div class="workflow-card"
-                style="--neon-color: rgba(0, 191, 255, 0.6); border-color: var(--neon-color); animation: neon-pulse 2.5s infinite alternate ease-in-out;">
-                <div class="wc-title" style="color: #00BFFF;">USER RESEARCH</div>
-                <div class="wc-list">Personas<br>User Journey</div>
-            </div>
-            <div class="workflow-card"
-                style="--neon-color: rgba(255, 20, 147, 0.6); border-color: var(--neon-color); animation: neon-pulse 2.5s infinite alternate ease-in-out 0.5s;">
-                <div class="wc-title" style="color: #FF1493;">UI/UX DESIGN</div>
-                <div class="wc-list">Figma<br>Wireframes<br>Prototypes</div>
-            </div>
-            <div class="workflow-card"
-                style="background: var(--c-black); color: var(--c-white); border-color: var(--c-black); --neon-color: rgba(57, 255, 20, 0.6); animation: neon-pulse 2.5s infinite alternate ease-in-out 1s;">
-                <div class="wc-title" style="color: #39FF14;">DEVELOPMENT</div>
-                <div class="wc-list" style="color: var(--c-gray);">Frontend<br>APIs<br>Database</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 03 ABOUT -->
-    <section id="about" class="section container" style="margin-top: 2vw;">
-        <div class="grid grid-2" style="align-items: center; gap: 4rem; margin-bottom: 4rem;">
-            <div>
-                <h2 class="text-h1" style="margin-bottom: 2rem;">
-                    ABOUT ME
-                </h2>
-                <p style="font-size: 1.5rem; color: var(--c-gray); line-height: 1.6;">
-                    Hello! I am Hemani, a passionate UI/UX Designer and Full Stack Developer. I enjoy creating seamless
-                    digital
-                    experiences that blend beautiful, user-centric interfaces with robust, scalable technologies.
-                    Currently
-                    pursuing my BCA at Noble University, I am dedicated to continuously learning and building products
-                    that are
-                    both visually stunning and highly functional.
+                <p class="hero-headline reveal-fade" style="--delay:0.3s">
+                    Python Developer building <em>clean, scalable</em> &amp; intelligent digital solutions.
                 </p>
+
+                <p class="hero-bio reveal-fade" style="--delay:0.4s">
+                    I build reliable web applications, automation tools, APIs and software solutions using Python
+                    and modern development technologies.
+                </p>
+
+                <div class="hero-actions reveal-fade" style="--delay:0.5s">
+                    <a href="#projects" class="btn-primary-pill">
+                        <i class="fa-solid fa-rocket"></i>
+                        View My Projects
+                    </a>
+                    <a href="resume/Milankumar_Rathod_Resume.pdf" class="btn-glass-pill" download>
+                        <i class="fa-solid fa-download"></i>
+                        Download Resume
+                    </a>
+                </div>
+
+                <div class="hero-social reveal-fade" style="--delay:0.6s">
+                    <a href="https://github.com/Milan07xt" target="_blank" class="social-btn" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/milan-rathod07/" target="_blank" class="social-btn"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:rathodmilan216@gmail.com" class="social-btn" aria-label="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <a href="https://wa.me/919327599254" target="_blank" class="social-btn" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
             </div>
-            <div>
-                <img src="assets/profile/hemani.jpg" alt="Hemani"
-                    style="width: 95%; height: 650px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: 0 0 40px rgb(13, 0, 255), 0 15px 40px rgba(0, 0, 0, 0.1); border: 2px solid rgba(99, 91, 255, 0.3);">
+
+            <!-- RIGHT: Visual -->
+            <div class="hero-visual reveal-fade" style="--delay:0.3s">
+                <div class="hero-visual-container">
+                    <!-- Glow ring behind image -->
+                    <div class="hero-glow-ring"></div>
+
+                    <!-- Profile image -->
+                    <div class="hero-image-wrap">
+                        <img src="images/profile-transparent.png" alt="Milan Rathod - Python Developer"
+                            class="hero-profile-img" loading="lazy">
+                    </div>
+
+                    <!-- Floating Python logo -->
+                    <div class="floating-badge badge-python" aria-hidden="true">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                            alt="Python" width="28" height="28">
+                        <span>Python</span>
+                    </div>
+
+                    <!-- Floating tech badges -->
+                    <div class="floating-badge badge-django" aria-hidden="true">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+                            alt="Django" width="22" height="22"
+                            style="filter:invert(1) sepia(1) saturate(5) hue-rotate(100deg)">
+                        <span>Django</span>
+                    </div>
+
+                    <div class="floating-badge badge-flask" aria-hidden="true">
+                        <i class="fa-solid fa-flask" style="color:#3776AB;font-size:18px"></i>
+                        <span>Flask</span>
+                    </div>
+
+                    <div class="floating-badge badge-fastapi" aria-hidden="true">
+                        <i class="fa-solid fa-bolt" style="color:#009688;font-size:16px"></i>
+                        <span>FastAPI</span>
+                    </div>
+
+                    <div class="floating-badge badge-sql" aria-hidden="true">
+                        <i class="fa-solid fa-database" style="color:#FFD43B;font-size:16px"></i>
+                        <span>SQLite3</span>
+                    </div>
+
+                    <div class="floating-badge badge-git" aria-hidden="true">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+                            width="20" height="20">
+                        <span>Git</span>
+                    </div>
+
+                    <div class="floating-badge badge-api" aria-hidden="true">
+                        <i class="fa-solid fa-plug" style="color:#3776AB;font-size:15px"></i>
+                        <span>REST API</span>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- Hero bottom stats -->
+        <div class="hero-stats reveal-fade" style="--delay:0.7s">
+            <div class="hero-stat">
+                <span class="hero-stat-num stat-num" data-count="5">0</span>
+                <span class="hero-stat-plus">+</span>
+                <span class="hero-stat-label">Projects</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <span class="hero-stat-num stat-num" data-count="9">0</span><span class="hero-stat-plus">+</span>
+                <span class="hero-stat-label">Certificates</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <span class="hero-stat-num stat-num" data-count="10">0</span><span class="hero-stat-plus">+</span>
+                <span class="hero-stat-label">Technologies</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <span class="hero-stat-num" style="font-size:1.6rem;font-weight:800;color:#3776AB">6.35</span>
+                <span class="hero-stat-label">CGPA</span>
+            </div>
+        </div>
+    </section>
 
-        <!-- Personal Details -->
+    <!-- ═══════════════════════════════════════
+             ABOUT SECTION
+        ═══════════════════════════════════════ -->
+    <section id="about" class="section about-section">
+        <div class="section-eyebrow reveal-up">About Me</div>
+        <h2 class="section-title reveal-up">Passionate Python Developer <span class="title-accent">from India</span>
+        </h2>
 
-        <h5 class="text-h1" style="margin-bottom: 2rem;">
-            PERSONAL DETAilS </h5>
-        <div
-            style="background: var(--c-light-gray); padding: 3rem; border-radius: var(--radius-md); max-width: 1000px; border: 1px solid var(--c-border);">
-            <h3 class="text-h3" style="margin-bottom: 2rem; font-size: 1.25rem;">PERSONAL DETAILS</h3>
-            <div class="grid grid-2" style="gap: 2rem;">
-                <div>
-                    <span class="label"
-                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Name</span>
-                    <p style="font-weight: 600; font-size: 1.1rem;">Hemani Vanvi</p>
+        <div class="about-grid">
+            <!-- Left: Bio -->
+            <div class="about-bio reveal-up" style="--delay:0.1s">
+                <p>
+                    I'm <strong>Milan Rathod</strong>, a B.Sc. IT graduate from Noble University, Junagadh. I
+                    specialize in
+                    Python backend development with a strong focus on <strong>Django, REST APIs, and backend
+                        architecture</strong>.
+                </p>
+                <p>
+                    My project experience includes a <strong>Face Recognition Attendance System</strong>, a
+                    <strong>Gym Management System</strong>,
+                    a <strong>Hotel Management Website</strong>, and an <strong>AI Portfolio Assistant</strong>
+                    built with FastAPI and OpenAI.
+                </p>
+                <p>
+                    I'm particularly passionate about <strong>Backend Development, REST APIs, and AI/ML
+                        applications</strong>.
+                    I believe in writing clean, maintainable code and solving real-world problems through practical
+                    software development.
+                </p>
+                <p>
+                    Currently looking for opportunities to <strong>apply my technical skills, work on real-world
+                        projects,
+                        and grow as a professional software developer</strong>.
+                </p>
+                <div class="about-cta">
+                    <a href="#contact" class="btn-primary-pill">
+                        <i class="fa-solid fa-paper-plane"></i> Get in Touch
+                    </a>
+                    <a href="resume/Milankumar_Rathod_Resume.pdf" class="btn-glass-pill" download>
+                        <i class="fa-solid fa-file-pdf"></i> Resume
+                    </a>
                 </div>
-                <div>
-                    <span class="label"
-                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Location</span>
-                    <p style="font-weight: 600; font-size: 1.1rem;">Junagadh, Gujarat, India</p>
+            </div>
+
+            <!-- Right: Info cards -->
+            <div class="about-cards reveal-up" style="--delay:0.2s">
+                <div class="about-info-card glass-card">
+                    <div class="info-card-icon" style="--icon-color:#3776AB"><i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <div class="info-card-label">Education</div>
+                        <div class="info-card-value">B.Sc. IT</div>
+                        <div class="info-card-sub">Noble University, 2023–2026</div>
+                    </div>
                 </div>
-                <div>
-                    <span class="label"
-                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Email</span>
-                    <p style="font-weight: 600; font-size: 1.1rem;"><a href="mailto:vanvihemani@gmail.com"
-                            style="color: var(--c-violet);">vanvihemani@gmail.com</a></p>
+
+                <div class="about-info-card glass-card">
+                    <div class="info-card-icon" style="--icon-color:#FFD43B"><i class="fa-solid fa-code"></i></div>
+                    <div>
+                        <div class="info-card-label">Role</div>
+                        <div class="info-card-value">Python Developer</div>
+                        <div class="info-card-sub">Django · FastAPI · REST</div>
+                    </div>
                 </div>
-                <div>
-                    <span class="label"
-                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Phone</span>
-                    <p style="font-weight: 600; font-size: 1.1rem;"><a href="tel:+918799064426" class="contact-card"
-                            style="color: inherit;">+91 87990 64426</a></p>
+
+                <div class="about-info-card glass-card">
+                    <div class="info-card-icon" style="--icon-color:#3776AB"><i class="fa-solid fa-server"></i>
+                    </div>
+                    <div>
+                        <div class="info-card-label">Focus</div>
+                        <div class="info-card-value">Backend Development</div>
+                        <div class="info-card-sub">APIs · Databases · Systems</div>
+                    </div>
                 </div>
-                <div>
-                    <span class="label"
-                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Languages</span>
-                    <p style="font-weight: 600; font-size: 1.1rem;">English, Hindi, Gujarati</p>
+
+                <div class="about-info-card glass-card">
+                    <div class="info-card-icon" style="--icon-color:#4CAF50"><i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <div>
+                        <div class="info-card-label">Mindset</div>
+                        <div class="info-card-value">Problem Solving</div>
+                        <div class="info-card-sub">Clean code · Continuous learning</div>
+                    </div>
                 </div>
-                <div>
-                    <span class="label"
-                        style="margin-bottom: 0.5rem; font-size: 10px; color: var(--c-gray);">Education</span>
-                    <p style="font-weight: 600; font-size: 1.1rem;">BCA, Noble University</p>
+
+                <!-- Profile quick-info -->
+                <div class="about-profile-card glass-card full-width">
+                    <ul class="profile-kv-list">
+                        <li><span class="kv-key"><i class="fa-solid fa-user"></i> Name</span><span class="kv-val">Milan
+                                Rathod</span></li>
+                        <li><span class="kv-key"><i class="fa-solid fa-location-dot"></i> Location</span><span
+                                class="kv-val">Gujarat, India</span></li>
+                        <li><span class="kv-key"><i class="fa-solid fa-envelope"></i> Email</span><a
+                                href="mailto:rathodmilan216@gmail.com"
+                                class="kv-val kv-link">rathodmilan216@gmail.com</a></li>
+                        <li><span class="kv-key"><i class="fa-brands fa-github"></i> GitHub</span><a
+                                href="https://github.com/Milan07xt" target="_blank"
+                                class="kv-val kv-link">@Milan07xt</a></li>
+                        <li><span class="kv-key"><i class="fa-brands fa-linkedin"></i> LinkedIn</span><a
+                                href="https://linkedin.com/in/milan-rathod07/" target="_blank"
+                                class="kv-val kv-link">milan-rathod07</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 04 DESIGN × DEVELOPMENT -->
-    <section class="split-screen" id="split-screen">
-        <div class="split-container">
-            <div class="split-panel split-design">
-                <h3 class="split-title">DESIGN</h3>
-                <ul class="split-list">
-                    <li>User Research</li>
-                    <li>Personas</li>
-                    <li>User Journey</li>
-                    <li>Wireframing</li>
-                    <li>Prototyping</li>
-                    <li>Design Systems</li>
-                    <li>Usability Testing</li>
-                    <li>Figma</li>
-                </ul>
+    <!-- ═══════════════════════════════════════
+             SKILLS SECTION — Python Galaxy
+        ═══════════════════════════════════════ -->
+    <section id="skills" class="section skills-section">
+        <div class="section-eyebrow reveal-up">Technical Expertise</div>
+        <h2 class="section-title reveal-up">Python <span class="title-accent">Skills Galaxy</span></h2>
+        <p class="section-subtitle reveal-up">Hover over any technology to explore my proficiency</p>
+
+        <!-- Galaxy orbit visualization -->
+        <div class="skills-galaxy reveal-up" id="skillsGalaxy">
+            <!-- Center nucleus -->
+            <div class="galaxy-center">
+                <div class="galaxy-nucleus">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                        alt="Python" width="52" height="52">
+                    <span>PYTHON</span>
+                </div>
+                <!-- Orbit rings (decorative) -->
+                <div class="orbit-ring orbit-ring-1"></div>
+                <div class="orbit-ring orbit-ring-2"></div>
+                <div class="orbit-ring orbit-ring-3"></div>
             </div>
 
-            <div class="split-center-x" id="split-x">×</div>
+            <!-- Orbit nodes -->
+            <div class="skill-node sn-1" data-skill="Django" data-level="85%" data-desc="Full-stack web framework">
+                <div class="node-inner">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django"
+                        width="28" height="28">
+                    <span>Django</span>
+                </div>
+                <div class="node-tooltip">Django — 85% · Web Framework</div>
+            </div>
 
-            <div class="split-panel split-dev">
-                <h3 class="split-title">DEVELOPMENT</h3>
-                <ul class="split-list">
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript</li>
-                    <li>Bootstrap</li>
-                    <li>React.js</li>
-                    <li>MySQL</li>
-                    <li>MongoDB</li>
-                    <li>GitHub</li>
-                </ul>
+
+
+            <div class="skill-node sn-2" data-skill="SQL" data-level="80%" data-desc="Relational database design">
+                <div class="node-inner">
+                    <i class="fa-solid fa-database" style="font-size:22px;color:#336791"></i>
+                    <span>SQL</span>
+                </div>
+                <div class="node-tooltip">SQL/SQLite — 80% · Databases</div>
+            </div>
+
+            <div class="skill-node sn-3" data-skill="Git" data-level="85%" data-desc="Version control & collaboration">
+                <div class="node-inner">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+                        width="28" height="28">
+                    <span>Git</span>
+                </div>
+                <div class="node-tooltip">Git/GitHub — 85% · Version Control</div>
+            </div>
+
+            <div class="skill-node sn-4" data-skill="OpenCV" data-level="75%" data-desc="Computer vision & AI">
+                <div class="node-inner">
+                    <i class="fa-solid fa-eye" style="font-size:22px;color:#5C3EE8"></i>
+                    <span>OpenCV</span>
+                </div>
+                <div class="node-tooltip">OpenCV — 75% · Computer Vision</div>
+            </div>
+
+            <div class="skill-node sn-5" data-skill="JavaScript" data-level="75%"
+                data-desc="Frontend scripting & logic">
+                <div class="node-inner">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                        alt="JavaScript" width="26" height="26">
+                    <span>JS</span>
+                </div>
+                <div class="node-tooltip">JavaScript — 75% · Frontend Logic</div>
+            </div>
+
+            <div class="skill-node sn-6" data-skill="HTML/CSS" data-level="85%" data-desc="Web structure & styling">
+                <div class="node-inner">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"
+                        width="26" height="26">
+                    <span>HTML/CSS</span>
+                </div>
+                <div class="node-tooltip">HTML/CSS — 85% · Web Markup</div>
+            </div>
+
+
+
+            <div class="skill-node sn-7" data-skill="Pandas" data-level="70%" data-desc="Data analysis & manipulation">
+                <div class="node-inner">
+                    <i class="fa-solid fa-chart-bar" style="font-size:20px;color:#130754"></i>
+                    <span>Pandas</span>
+                </div>
+                <div class="node-tooltip">Pandas — 70% · Data Analysis</div>
+            </div>
+
+            <div class="skill-node sn-8" data-skill="SQLite3" data-level="72%" data-desc="Relational database">
+                <div class="node-inner">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"
+                        alt="SQLite3" width="26" height="26">
+                    <span>SQLite3</span>
+                </div>
+                <div class="node-tooltip">SQLite3 — 72% · Database</div>
+            </div>
+
+            <div class="skill-node sn-9" data-skill="Automation" data-level="80%"
+                data-desc="Python scripting & automation">
+                <div class="node-inner">
+                    <i class="fa-solid fa-robot" style="font-size:20px;color:#FFD43B"></i>
+                    <span>Automation</span>
+                </div>
+                <div class="node-tooltip">Automation — 80% · Scripting</div>
+            </div>
+        </div>
+
+        <!-- Skills grid fallback / supplementary list -->
+        <div class="skills-chips-row reveal-up" style="--delay:0.2s">
+            <span class="skill-chip"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="16"
+                    height="16" alt=""> Python</span>
+            <span class="skill-chip"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" width="16"
+                    height="16" alt="" style="filter:invert(1) sepia(1) saturate(5) hue-rotate(100deg)">
+                Django</span>
+
+            <span class="skill-chip"><i class="fa-solid fa-database"></i> SQL</span>
+            <span class="skill-chip"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" width="16"
+                    height="16" alt=""> SQLite3</span>
+            <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                    width="16" height="16" alt=""> Git</span>
+
+            <span class="skill-chip"><i class="fa-solid fa-eye" style="color:#5C3EE8"></i> OpenCV</span>
+            <span class="skill-chip"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                    width="16" height="16" alt=""> JavaScript</span>
+            <span class="skill-chip"><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="16"
+                    height="16" alt=""> HTML/CSS</span>
+            <span class="skill-chip"><i class="fa-solid fa-chart-bar" style="color:#130754"></i> Pandas</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+             PROJECTS SECTION
+        ═══════════════════════════════════════ -->
+    <section id="projects" class="section projects-section">
+        <div class="section-eyebrow reveal-up">Portfolio</div>
+        <h2 class="section-title reveal-up">Featured <span class="title-accent">Projects</span></h2>
+
+        <!-- Filter buttons -->
+        <div class="project-filters reveal-up" style="--delay:0.1s">
+            <button class="filter-pill active" data-filter="all" id="filter-all">All</button>
+            <button class="filter-pill" data-filter="python">Python</button>
+            <button class="filter-pill" data-filter="django">Django</button>
+            <button class="filter-pill" data-filter="opencv">OpenCV</button>
+            <button class="filter-pill" data-filter="frontend">Frontend</button>
+        </div>
+
+        <div class="project-grid" id="projectGrid">
+
+            <!-- Project 1: AI Portfolio Assistant -->
+            <div class="project-card reveal-up tilt-card" data-tags="python fastapi" style="--delay:0.1s">
+                <div class="project-card-image-wrap">
+                    <div class="project-placeholder-img"
+                        style="background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%);">
+                        <i class="fa-solid fa-robot" style="font-size:3.5rem;color:rgba(255,255,255,0.9)"></i>
+                    </div>
+                    <div class="project-image-overlay"></div>
+                    <span class="project-live-badge"><span class="pulse-dot"></span> LIVE</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-card-tags">
+                        <span class="ptag">Python</span>
+                        <span class="ptag">FastAPI</span>
+                        <span class="ptag">OpenAI</span>
+                        <span class="ptag">JS</span>
+                    </div>
+                    <h3 class="project-card-title">AI Portfolio Assistant</h3>
+                    <p class="project-card-desc">A professional AI assistant built with FastAPI and OpenAI that
+                        understands portfolio context and answers visitor questions dynamically.</p>
+                    <div class="project-card-actions">
+                        <button class="proj-btn proj-btn-primary"
+                            onclick="document.getElementById('ai-agent-btn') && document.getElementById('ai-agent-btn').click()">
+                            <i class="fa-solid fa-comment-dots"></i> Try it now
+                        </button>
+                        <button class="proj-btn proj-btn-ghost"
+                            onclick="window.openAICaseStudy && window.openAICaseStudy()">
+                            <i class="fa-solid fa-circle-info"></i> Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Face Recognition Attendance -->
+            <div class="project-card reveal-up tilt-card" data-tags="python django opencv" style="--delay:0.15s">
+                <div class="project-card-image-wrap">
+                    <img src="images/face-attendance.png" alt="Face Recognition Attendance System"
+                        class="project-card-img" loading="lazy">
+                    <div class="project-image-overlay"></div>
+                    <span class="project-live-badge"><span class="pulse-dot"></span> LIVE</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-card-tags">
+                        <span class="ptag">Python</span>
+                        <span class="ptag">Django</span>
+                        <span class="ptag">OpenCV</span>
+                        <span class="ptag">REST API</span>
+                    </div>
+                    <h3 class="project-card-title">Face Recognition Attendance System</h3>
+                    <p class="project-card-desc">Real-time face recognition attendance tracking system with Django
+                        REST API backend and automated log recording.</p>
+                    <div class="project-card-actions">
+                        <a href="https://face-detection-attendance-woad.vercel.app/home/" target="_blank"
+                            class="proj-btn proj-btn-primary">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/Milan07xt/SEM-06" target="_blank" class="proj-btn proj-btn-ghost">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Gym Management System -->
+            <div class="project-card reveal-up tilt-card" data-tags="python django" style="--delay:0.2s">
+                <div class="project-card-image-wrap">
+                    <img src="images/gym.jpeg" alt="Gym Management System" class="project-card-img" loading="lazy">
+                    <div class="project-image-overlay"></div>
+                    <span class="project-live-badge"><span class="pulse-dot"></span> LIVE</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-card-tags">
+                        <span class="ptag">Python</span>
+                        <span class="ptag">Django</span>
+                        <span class="ptag">SQLite3</span>
+                    </div>
+                    <h3 class="project-card-title">Gym Management System</h3>
+                    <p class="project-card-desc">Comprehensive Django-based system for managing gym memberships,
+                        subscription plans, and payment tracking with an admin dashboard.</p>
+                    <div class="project-card-actions">
+                        <a href="https://django-gym-management-system-websit-one.vercel.app/" target="_blank"
+                            class="proj-btn proj-btn-primary">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/Milan07xt/Django-Gym-Management-System-Website" target="_blank"
+                            class="proj-btn proj-btn-ghost">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Hotel Management Website -->
+            <div class="project-card reveal-up tilt-card" data-tags="frontend" style="--delay:0.25s">
+                <div class="project-card-image-wrap">
+                    <img src="images/hotel.jpeg" alt="Hotel Management Website" class="project-card-img" loading="lazy">
+                    <div class="project-image-overlay"></div>
+                    <span class="project-live-badge"><span class="pulse-dot"></span> LIVE</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-card-tags">
+                        <span class="ptag">HTML5</span>
+                        <span class="ptag">CSS3</span>
+                        <span class="ptag">JavaScript</span>
+                    </div>
+                    <h3 class="project-card-title">Hotel Management Website</h3>
+                    <p class="project-card-desc">Responsive hotel booking website with modern UI design, interactive
+                        booking flow, and optimized mobile experience.</p>
+                    <div class="project-card-actions">
+                        <a href="https://hotel-website-project-kappa.vercel.app/index.html" target="_blank"
+                            class="proj-btn proj-btn-primary">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/Milan07xt/Hotel-Website-Project" target="_blank"
+                            class="proj-btn proj-btn-ghost">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Textbook RAG Assistant -->
+            <div class="project-card reveal-up tilt-card" data-tags="python" style="--delay:0.3s">
+                <div class="project-card-image-wrap">
+                    <div class="project-placeholder-img"
+                        style="background: linear-gradient(135deg, #1e3a5f 0%, #3776AB 100%);">
+                        <i class="fa-solid fa-book-open" style="font-size:3.5rem;color:rgba(255,255,255,0.9)"></i>
+                    </div>
+                    <div class="project-image-overlay"></div>
+                    <span class="project-live-badge" style="background:rgba(55,118,171,0.9)">RAG</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-card-tags">
+                        <span class="ptag">Python</span>
+                        <span class="ptag">RAG</span>
+                        <span class="ptag">LLM</span>
+                        <span class="ptag">NLP</span>
+                    </div>
+                    <h3 class="project-card-title">Textbook RAG Assistant</h3>
+                    <p class="project-card-desc">Retrieval-Augmented Generation assistant built with Python for
+                        semantic textbook queries and intelligent Q&A responses.</p>
+                    <div class="project-card-actions">
+                        <a href="https://github.com/Milan07xt/Textbook-RAG-Assistant" target="_blank"
+                            class="proj-btn proj-btn-primary">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+             DEVELOPER DASHBOARD
+        ═══════════════════════════════════════ -->
+    <section id="dashboard" class="section dashboard-section">
+        <div class="section-eyebrow reveal-up">Overview</div>
+        <h2 class="section-title reveal-up">Developer <span class="title-accent">Dashboard</span></h2>
+
+        <div class="dashboard-grid">
+            <!-- Stat cards -->
+            <div class="dash-stat-card glass-card reveal-up" style="--delay:0.1s">
+                <div class="dash-stat-icon" style="--c:#3776AB"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="dash-stat-num stat-num" data-count="5">0</div>
+                <div class="dash-stat-label">Projects Built</div>
+            </div>
+
+            <div class="dash-stat-card glass-card reveal-up" style="--delay:0.15s">
+                <div class="dash-stat-icon" style="--c:#FFD43B"><i class="fa-solid fa-microchip"></i></div>
+                <div class="dash-stat-num stat-num" data-count="10">0</div>
+                <div class="dash-stat-label">Technologies</div>
+            </div>
+
+            <div class="dash-stat-card glass-card reveal-up" style="--delay:0.2s">
+                <div class="dash-stat-icon" style="--c:#4CAF50"><i class="fa-solid fa-award"></i></div>
+                <div class="dash-stat-num stat-num" data-count="9">0</div>
+                <div class="dash-stat-label">Certifications</div>
+            </div>
+
+            <div class="dash-stat-card glass-card reveal-up" style="--delay:0.25s">
+                <div class="dash-stat-icon" style="--c:#9C27B0"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="dash-stat-num" style="font-size:2rem;font-weight:800;color:#111827">B.Sc. IT</div>
+                <div class="dash-stat-label">Degree</div>
+            </div>
+
+            <!-- Current Focus card -->
+            <div class="dash-focus-card glass-card reveal-up" style="--delay:0.3s">
+                <div class="dash-card-header">
+                    <span class="dash-card-dot" style="background:#4CAF50"></span>
+                    <span>Current Focus</span>
+                </div>
+                <div class="dash-focus-list">
+                    <div class="focus-item"><i class="fa-solid fa-arrow-right" style="color:#3776AB"></i> Django
+                        REST Framework APIs</div>
+                    <div class="focus-item"><i class="fa-solid fa-arrow-right" style="color:#3776AB"></i> FastAPI
+                        Microservices</div>
+                    <div class="focus-item"><i class="fa-solid fa-arrow-right" style="color:#3776AB"></i> AI/ML with
+                        Python</div>
+                    <div class="focus-item"><i class="fa-solid fa-arrow-right" style="color:#3776AB"></i> SQLite3
+                        & Advanced SQL</div>
+                </div>
+            </div>
+
+            <!-- GitHub Activity -->
+            <div class="dash-github-card glass-card reveal-up" style="--delay:0.35s">
+                <div class="dash-card-header">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub — @Milan07xt</span>
+                </div>
+                <!-- GitHub Profile Photo -->
+                <div class="dash-github-profile">
+                    <a href="https://github.com/Milan07xt" target="_blank" class="dash-github-avatar-link">
+                        <img src="https://github.com/Milan07xt.png" alt="Milan07xt GitHub Avatar"
+                            class="dash-github-avatar" loading="lazy" onerror="this.style.display='none'">
+                    </a>
+                    <div class="dash-github-meta">
+                        <span class="dash-github-name">Milan Rathod</span>
+                        <span class="dash-github-handle">@Milan07xt</span>
+                    </div>
+                </div>
+                <div class="github-lang-bars">
+                    <div class="glb-item">
+                        <span>Python</span>
+                        <div class="glb-bar">
+                            <div class="glb-fill" style="--w:72%;background:#3572A5"></div>
+                        </div>
+                        <span>72%</span>
+                    </div>
+                    <div class="glb-item">
+                        <span>JavaScript</span>
+                        <div class="glb-bar">
+                            <div class="glb-fill" style="--w:16%;background:#f1e05a"></div>
+                        </div>
+                        <span>16%</span>
+                    </div>
+                    <div class="glb-item">
+                        <span>HTML/CSS</span>
+                        <div class="glb-bar">
+                            <div class="glb-fill" style="--w:12%;background:#e34c26"></div>
+                        </div>
+                        <span>12%</span>
+                    </div>
+                </div>
+                <a href="https://github.com/Milan07xt" target="_blank" class="dash-github-link">
+                    <i class="fab fa-github"></i> View Profile
+                </a>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="dash-stack-card glass-card reveal-up" style="--delay:0.4s">
+                <div class="dash-card-header">
+                    <i class="fa-solid fa-layer-group" style="color:#3776AB"></i>
+                    <span>Technical Stack</span>
+                </div>
+                <div class="stack-chips">
+                    <span class="stack-chip python">Python</span>
+                    <span class="stack-chip django">Django</span>
+                    <span class="stack-chip fastapi">FastAPI</span>
+                    <span class="stack-chip">REST API</span>
+                    <span class="stack-chip">SQLite</span>
+                    <span class="stack-chip">OpenCV</span>
+                    <span class="stack-chip">Git</span>
+                    <span class="stack-chip">JavaScript</span>
+                    <span class="stack-chip">HTML/CSS</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 05 FEATURED CASE STUDY: DUST & GLOW -->
-    <section id="work" class="section container case-study" style="margin-top: 4vw;">
-        <div class="cs-header text-center">
-            <span class="label">Featured Case Study</span>
-            <h2 class="text-h1">DUST & GLOW</h2>
-            <p style="font-size: 1.25rem; color: var(--c-gray);">Makeup & Skincare Shopping App — UI/UX Case Study</p>
-        </div>
+    <!-- ═══════════════════════════════════════
+             EXPERIENCE SECTION
+        ═══════════════════════════════════════ -->
+    <section id="experience" class="section experience-section">
+        <div class="section-eyebrow reveal-up">Journey</div>
+        <h2 class="section-title reveal-up">Professional <span class="title-accent">Experience</span></h2>
 
-        <div class="cs-image reveal-img" style="margin-bottom: 4vw;">
-            <img src="assets/projects/10.jpg" alt="Dust & Glow Mockup">
-        </div>
+        <div class="timeline">
+            <div class="timeline-track"></div>
 
-        <div class="cs-stage">
-            <span class="cs-stage-num">01 / OVERVIEW</span>
-            <h3 class="text-h3" style="margin-bottom: 2rem; max-width: 800px;">
-                Dust & Glow is a premium cosmetics platform designed to simplify beauty shopping by matching users with
-                suitable products through intuitive UI and personalization.
-            </h3>
-        </div>
-
-        <div class="cs-stage"
-            style="background: var(--c-black); color: var(--c-white); padding: 5vw; border-radius: var(--radius-lg);">
-            <span class="cs-stage-num" style="color: var(--c-gray);">02 / THE PROBLEM</span>
-            <h3 class="text-h2" style="margin-bottom: 2rem;">
-                ONLINE BEAUTY SHOPPING CAN FEEL UNCERTAIN.
-            </h3>
-            <div class="grid grid-3">
-                <p>Selecting suitable foundation/concealer shades without testing.</p>
-                <p>Finding products tailored to specific skin concerns.</p>
-                <p>Trusting product authenticity and performance before purchasing.</p>
-            </div>
-        </div>
-
-        <div class="cs-stage">
-            <span class="cs-stage-num">03 / USER RESEARCH & PERSONAS</span>
-            <div class="grid grid-2">
-                <div class="persona-card">
-                    <h4 style="margin-bottom: 1rem;">GOALS</h4>
-                    <p style="color: var(--c-gray); margin-bottom: 2rem;">Find skincare for sensitive skin, quick
-                        checkout, read honest reviews.</p>
-                    <h4 style="margin-bottom: 1rem;">PAIN POINTS</h4>
-                    <p style="color: var(--c-gray);">Overwhelmed by choices, hard to find shade matches, fake reviews.
-                    </p>
+            <div class="timeline-item reveal-up" style="--delay:0.1s">
+                <div class="timeline-dot">
+                    <i class="fa-solid fa-code"></i>
                 </div>
-                <div class="persona-card" style="background: var(--c-light-gray);">
-                    <h4 style="margin-bottom: 1rem;">JOURNEY</h4>
-                    <p style="color: var(--c-gray);">Discover → Search → Compare → Select → Purchase → Track</p>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-header">
+                        <span class="timeline-period">2024 — Present</span>
+                        <span class="timeline-type freelance">Freelance</span>
+                    </div>
+                    <h3 class="timeline-role">Python / Django Developer</h3>
+                    <h4 class="timeline-org">Freelance &amp; Projects</h4>
+                    <p class="timeline-desc">Developing real-world applications including Gym Management Systems,
+                        Hotel Booking Websites, and AI-powered utilities. Handling end-to-end development from
+                        database design to API deployment.</p>
+                    <div class="timeline-tech">
+                        <span>Python</span><span>Django</span><span>FastAPI</span><span>REST
+                            API</span><span>SQLite</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="cs-stage">
-            <span class="cs-stage-num">04 / HIGH-FIDELITY UI & PROTOTYPE</span>
-            <!-- Gallery of Dust & Glow Screens -->
-            <div class="gallery-horizontal">
-                <!-- Dust & Glow UI Screens -->
-                <div class="gallery-item"><a
-                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
-                        target="_blank"><img src="assets/projects/10.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a
-                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
-                        target="_blank"><img src="assets/projects/38.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a
-                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
-                        target="_blank"><img src="assets/projects/55.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a
-                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
-                        target="_blank"><img src="assets/projects/73.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a
-                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
-                        target="_blank"><img src="assets/projects/83.jpg" alt="Dust & Glow Screen"></a></div>
-                <div class="gallery-item"><a
-                        href="https://www.figma.com/design/tE98fqsJlTXSMVMMPPvBoa/project-makeup?node-id=19-197&p=f&t=LfifQAVMhqlPdyz7-0"
-                        target="_blank"><img src="assets/projects/105.jpg" alt="Dust & Glow Screen"></a></div>
+            <div class="timeline-item reveal-up" style="--delay:0.2s">
+                <div class="timeline-dot">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-header">
+                        <span class="timeline-period">2023 — 2026</span>
+                        <span class="timeline-type academic">Academic</span>
+                    </div>
+                    <h3 class="timeline-role">B.Sc. Information Technology</h3>
+                    <h4 class="timeline-org">Noble University, Junagadh</h4>
+                    <p class="timeline-desc">Focusing on advanced computing concepts, relational databases (SQL,
+                        SQLite3), and practical application of Computer Vision for attendance and security
+                        systems. CGPA: 6.35</p>
+                    <div class="timeline-tech">
+                        <span>Data
+                            Structures</span><span>DBMS</span><span>Networking</span><span>AI/ML</span><span>Web
+                            Dev</span>
+                    </div>
+                </div>
             </div>
-            <div style="margin-top: 2rem; text-align: center;">
-                <h3 style="font-size: 2rem; margin-bottom: 1rem;">DESIGNED IN FIGMA</h3>
-                <p style="color: var(--c-gray);">A complete UI/UX system from research to prototype.</p>
-            </div>
+
         </div>
     </section>
 
-    <!-- 07 SECOND PROJECT: TOURISM OF JUNAGADH -->
-    <section class="section container case-study">
-        <div class="cs-header text-center">
-            <span class="label">Web Design + Frontend Development</span>
-            <h2 class="text-h1">TOURISM OF JUNAGADH</h2>
-        </div>
+    <!-- ═══════════════════════════════════════
+             EDUCATION SECTION
+        ═══════════════════════════════════════ -->
+    <section id="education" class="section education-section">
+        <div class="section-eyebrow reveal-up">Academic</div>
+        <h2 class="section-title reveal-up">Education <span class="title-accent">&amp; Qualifications</span></h2>
 
-        <div class="cs-image reveal-img" style="height: 60vh; margin-bottom: 4rem;">
-            <img src="assets/projects/junagadh.jpg" alt="Tourism of Junagadh"
-                style="width: 100%; height: 100%; object-fit: cover;">
-            <div
-                style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; color: white;">
-                <h3 style="font-size: 3rem; text-transform: uppercase;">Discover Junagadh</h3>
-            </div>
-        </div>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
 
-        <div class="grid grid-2">
-            <div>
-                <h3 class="text-h3" style="margin-bottom: 1rem;">PROJECT SCOPE</h3>
-                <p style="color: var(--c-gray);">A frontend web project showcasing the historical and cultural heritage
-                    of Junagadh and Girnar. The platform features an interactive gallery, famous places directory, and
-                    hotel booking layouts.</p>
-            </div>
-            <div>
-                <h3 class="text-h3" style="margin-bottom: 1rem;">TECHNOLOGY</h3>
-                <p style="color: var(--c-gray);">HTML5, CSS3, JavaScript. Fully responsive implementation based on
-                    structured UI designs.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 08 DESIGN LAB -->
-    <section id="lab" class="section container"
-        style="background: var(--c-light-gray); padding: 5vw; border-radius: var(--radius-lg); margin-bottom: 4vw;">
-        <div class="cs-header text-center">
-            <h2 class="text-h1">DESIGN LAB</h2>
-            <p style="color: var(--c-gray);">Frontend and UI interaction experiments.</p>
-        </div>
-        <div class="lab-grid">
-            <div class="lab-item">
-                <span class="lab-label">01 Magnetic Button</span>
-                <div class="btn demo-btn">Hover Me</div>
-            </div>
-            <div class="lab-item demo-cursor">
-                <span class="lab-label">02 Cursor Interaction</span>
-                <div class="demo-dot"></div>
-            </div>
-            <div class="lab-item demo-tilt">
-                <span class="lab-label">03 Card Tilt</span>
-                <div class="demo-card"></div>
-            </div>
-            <div class="lab-item demo-reveal">
-                <span class="lab-label">04 Scroll Reveal</span>
-                <div class="demo-text">REVEAL</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 09 SKILLS & 10 TECHNOLOGY MARQUEE -->
-    <section id="skills">
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <span>FIGMA</span> <span class="solid">UI/UX</span>
-                <span>HTML5</span> <span class="solid">CSS3</span>
-                <span>JAVASCRIPT</span> <span class="solid">BOOTSTRAP</span>
-                <span>REACT</span> <span class="solid">MYSQL</span>
-                <span>MONGODB</span> <span class="solid">GITHUB</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 13 EDUCATION & 14 ACADEMIC PERFORMANCE -->
-    <section class="section container">
-        <div class="grid grid-2">
-            <div>
-                <h2 class="text-h1" style="margin-bottom: 2rem;">EDUCATION</h2>
-
-                <!-- BCA -->
-                <div
-                    style="border-left: 2px solid var(--c-border); padding-left: 2rem; margin-bottom: 3rem; position: relative;">
-                    <div
-                        style="position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--c-violet);">
+            <!-- 01: M.Sc. IT (Pursuing) -->
+            <div class="timeline-item reveal-up" style="--delay:0.1s; --theme-color: #8B5CF6;">
+                <div class="timeline-node">01</div>
+                <div class="edu-card glass-card">
+                    <div class="edu-card-left">
+                        <div class="edu-card-badge purple">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <div class="badge-time"><i class="fa-regular fa-clock"></i></div>
+                        </div>
+                        <div class="edu-card-year">2026 — Present</div>
+                        <div class="edu-status-badge pursuing">PURSUING</div>
+                        <div class="edu-label">Post Graduation</div>
                     </div>
-                    <h3 class="text-h3">BACHELOR OF COMPUTER APPLICATIONS</h3>
-                    <p style="color: var(--c-gray); margin-bottom: 1rem;">NOBLE UNIVERSITY, JUNAGADH<br>2023 — 2026</p>
-                    <div class="cgpa-badge">CGPA: 6.70</div>
-                </div>
+                    <div class="edu-card-middle">
+                        <h3 class="edu-card-degree">Master of Science in Information Technology</h3>
+                        <div class="edu-card-school">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <span>Dr. Babasaheb Ambedkar Open University (BAOU) - Ahmedabad <br><small>(Government
+                                    University)</small></span>
+                        </div>
+                        <div class="edu-mode-badge">External Mode</div>
+                        <p class="edu-desc">Advanced study in computer science, software engineering, and
+                            information technology.</p>
 
-                <!-- 12th HSC -->
-                <div
-                    style="border-left: 2px solid var(--c-border); padding-left: 2rem; margin-bottom: 3rem; position: relative;">
-                    <div
-                        style="position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--c-blue);">
-                    </div>
-                    <h3 class="text-h3" style="font-size: 1.25rem;">12TH GRADE (HSC) — GENERAL</h3>
-                    <p style="color: var(--c-gray); margin-bottom: 1rem;">GSEB BOARD, GANDHINAGAR<br>MARCH 2023</p>
-                    <div class="cgpa-badge" style="--neon-color: rgba(0, 191, 255, 0.7);">
-                        PERCENTILE: 84.69 PR</div>
-                </div>
-
-                <!-- 10th SSC -->
-                <div style="border-left: 2px solid var(--c-border); padding-left: 2rem; position: relative;">
-                    <div
-                        style="position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: #00e676;">
-                    </div>
-                    <h3 class="text-h3" style="font-size: 1.25rem;">10TH GRADE (SSC)</h3>
-                    <p style="color: var(--c-gray); margin-bottom: 1rem;">GSEB BOARD, GANDHINAGAR<br>MAY 2021</p>
-                    <div class="cgpa-badge" style="--neon-color: rgba(0, 230, 118, 0.7);">
-                        PERCENTILE: 81.42 PR</div>
-                </div>
-            </div>
-
-            <div>
-                <h3 class="text-h3">ACADEMIC PERFORMANCE</h3>
-                <p style="color: var(--c-gray);">0 BACKLOGS ALL SEMESTERS</p>
-                <div class="academic-chart" id="chart">
-                    <div class="chart-bar">
-                        <div class="chart-fill" data-height="64%"></div><span class="chart-value">6.42</span><span
-                            class="chart-label">SEM 1</span>
-                    </div>
-                    <div class="chart-bar">
-                        <div class="chart-fill" data-height="54%"></div><span class="chart-value">5.42</span><span
-                            class="chart-label">SEM 2</span>
-                    </div>
-                    <div class="chart-bar">
-                        <div class="chart-fill" data-height="62%"></div><span class="chart-value">6.22</span><span
-                            class="chart-label">SEM 3</span>
-                    </div>
-                    <div class="chart-bar">
-                        <div class="chart-fill" data-height="72%"></div><span class="chart-value">7.20</span><span
-                            class="chart-label">SEM 4</span>
-                    </div>
-                    <div class="chart-bar">
-                        <div class="chart-fill" data-height="78%"></div><span class="chart-value">7.82</span><span
-                            class="chart-label">SEM 5</span>
-                    </div>
-                    <div class="chart-bar">
-                        <div class="chart-fill" data-height="71%"></div><span class="chart-value">7.17</span><span
-                            class="chart-label">SEM 6</span>
+                        <div class="edu-details-row">
+                            <div class="detail-item"><i class="fa-regular fa-calendar"></i>
+                                <div><span>Duration</span><strong>2 Years</strong></div>
+                            </div>
+                            <div class="detail-item"><i class="fa-solid fa-book-open"></i>
+                                <div><span>Mode</span><strong>External</strong></div>
+                            </div>
+                            <div class="detail-item"><i class="fa-solid fa-graduation-cap"></i>
+                                <div><span>Status</span><strong>Pursuing</strong></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- 02: B.Sc. IT (Completed) -->
+            <div class="timeline-item reveal-up" style="--delay:0.2s; --theme-color: #3B82F6;">
+                <div class="timeline-node">02</div>
+                <div class="edu-card glass-card">
+                    <div class="edu-card-left">
+                        <div class="edu-card-badge blue">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <div class="badge-time"><i class="fa-solid fa-circle-check"></i></div>
+                        </div>
+                        <div class="edu-card-year">2023 — 2026</div>
+                        <div class="edu-status-badge completed">COMPLETED</div>
+                        <div class="edu-label">Graduation</div>
+                    </div>
+                    <div class="edu-card-middle">
+                        <div class="top-badge-row">
+                            <h3 class="edu-card-degree">Bachelor of Science in Information Technology</h3>
+                            <div class="top-status-badge green"><i class="fa-solid fa-check"></i> Graduation
+                                Completed</div>
+                        </div>
+                        <div class="edu-card-school">Noble University, Junagadh</div>
+                        <p class="edu-desc">Focused on software development, programming, data structures, database
+                            systems, and emerging technologies.</p>
+
+                        <div class="edu-details-row">
+                            <div class="detail-item"><i class="fa-regular fa-calendar"></i>
+                                <div><span>Duration</span><strong>3 Years</strong></div>
+                            </div>
+                            <div class="detail-item"><i class="fa-solid fa-award"></i>
+                                <div><span>Result</span><strong>6.35 CGPA</strong></div>
+                            </div>
+                            <div class="detail-item"><i class="fa-solid fa-trophy" style="color:var(--edu-orange)"></i>
+                                <div><span>Status</span><strong>Completed</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="edu-card-right">
+                        <!-- Semester Performance Graph -->
+                        <div class="cgpa-graph-container">
+                            <h4 class="cgpa-graph-title">Semester Performance</h4>
+                            <div class="cgpa-graph">
+                                <div class="cgpa-bar-wrap">
+                                    <div class="cgpa-value">6.83</div>
+                                    <div class="cgpa-bar"><div class="cgpa-fill" style="height: 68.3%;"></div></div>
+                                    <div class="cgpa-label">Sem-1</div>
+                                </div>
+                                <div class="cgpa-bar-wrap">
+                                    <div class="cgpa-value">5.67</div>
+                                    <div class="cgpa-bar"><div class="cgpa-fill" style="height: 56.7%;"></div></div>
+                                    <div class="cgpa-label">Sem-2</div>
+                                </div>
+                                <div class="cgpa-bar-wrap">
+                                    <div class="cgpa-value">6.09</div>
+                                    <div class="cgpa-bar"><div class="cgpa-fill" style="height: 60.9%;"></div></div>
+                                    <div class="cgpa-label">Sem-3</div>
+                                </div>
+                                <div class="cgpa-bar-wrap">
+                                    <div class="cgpa-value">6.36</div>
+                                    <div class="cgpa-bar"><div class="cgpa-fill" style="height: 63.6%;"></div></div>
+                                    <div class="cgpa-label">Sem-4</div>
+                                </div>
+                                <div class="cgpa-bar-wrap">
+                                    <div class="cgpa-value">6.45</div>
+                                    <div class="cgpa-bar"><div class="cgpa-fill" style="height: 64.5%;"></div></div>
+                                    <div class="cgpa-label">Sem-5</div>
+                                </div>
+                                <div class="cgpa-bar-wrap">
+                                    <div class="cgpa-value">6.67</div>
+                                    <div class="cgpa-bar"><div class="cgpa-fill" style="height: 66.7%;"></div></div>
+                                    <div class="cgpa-label">Sem-6</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 03: HSC (Completed) -->
+            <div class="timeline-item reveal-up" style="--delay:0.3s; --theme-color: #F59E0B;">
+                <div class="timeline-node">03</div>
+                <div class="edu-card glass-card">
+                    <div class="edu-card-left">
+                        <div class="edu-card-badge orange">
+                            <i class="fa-solid fa-book-open"></i>
+                            <div class="badge-time"><i class="fa-solid fa-circle-check"></i></div>
+                        </div>
+                        <div class="edu-card-year">2023</div>
+                        <div class="edu-status-badge completed">COMPLETED</div>
+                        <div class="edu-label">Higher Secondary</div>
+                    </div>
+                    <div class="edu-card-middle">
+                        <h3 class="edu-card-degree">Higher Secondary (HSC)</h3>
+                        <div class="edu-card-school">Commerce Stream — GSEB</div>
+                        <p class="edu-desc">Commerce with Mathematics</p>
+
+                        <div class="edu-details-row">
+                            <div class="detail-item"><i class="fa-solid fa-award" style="color:var(--edu-orange)"></i>
+                                <div><span>Board</span><strong>GSEB</strong></div>
+                            </div>
+                            <div class="detail-item"><i class="fa-regular fa-calendar"></i>
+                                <div><span>Year</span><strong>2023</strong></div>
+                            </div>
+                            <div class="detail-item"><i class="fa-solid fa-file-lines"></i>
+                                <div><span>Result</span><strong>78.41%</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="edu-card-right">
+                        <div class="score-display">
+                            <div class="score-circle orange">
+                                <div class="score-text">
+                                    <span class="num">78.41<span class="pct">%</span></span>
+                                    <span class="lbl">Percentage</span>
+                                </div>
+                            </div>
+                            <div class="score-graph">
+                                <div class="graph-header">Performance Trend <span class="tag orange">Great
+                                        Performance! <i class="fa-solid fa-star"></i></span></div>
+                                <!-- A decorative SVG line graph -->
+                                <svg viewBox="0 0 200 60" class="trend-line orange">
+                                    <path d="M10,40 Q30,20 50,30 T90,50 T130,20 T170,10 T190,20" fill="none"
+                                        stroke="var(--edu-orange)" stroke-width="2" />
+                                    <circle cx="10" cy="40" r="3" fill="var(--edu-orange)" />
+                                    <circle cx="50" cy="30" r="3" fill="var(--edu-orange)" />
+                                    <circle cx="90" cy="50" r="3" fill="var(--edu-orange)" />
+                                    <circle cx="130" cy="20" r="3" fill="var(--edu-orange)" />
+                                    <circle cx="170" cy="10" r="3" fill="var(--edu-orange)" />
+                                    <circle cx="190" cy="20" r="3" fill="var(--edu-orange)" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 04: SSC (Completed) -->
+            <div class="timeline-item reveal-up" style="--delay:0.4s; --theme-color: #10B981;">
+                <div class="timeline-node">04</div>
+                <div class="edu-card glass-card">
+                    <div class="edu-card-left">
+                        <div class="edu-card-badge green">
+                            <i class="fa-solid fa-file-contract"></i>
+                            <div class="badge-time"><i class="fa-solid fa-circle-check"></i></div>
+                        </div>
+                        <div class="edu-card-year">2021</div>
+                        <div class="edu-status-badge completed">COMPLETED</div>
+                        <div class="edu-label">Secondary School</div>
+                    </div>
+                    <div class="edu-card-middle">
+                        <h3 class="edu-card-degree">Secondary School Certificate (SSC)</h3>
+                        <div class="edu-card-school">Gujarat Secondary Education Board (GSEB)</div>
+                        <p class="edu-desc">Completed secondary education with strong academic foundation.</p>
+
+                        <div class="edu-details-row">
+                            <div class="detail-item"><i class="fa-solid fa-award" style="color:var(--edu-green)"></i>
+                                <div><span>Board</span><strong>GSEB</strong></div>
+                            </div>
+                            <div class="detail-item"><i class="fa-regular fa-calendar"></i>
+                                <div><span>Year</span><strong>2021</strong></div>
+                            </div>
+                            <div class="detail-item"><i class="fa-solid fa-file-lines"></i>
+                                <div><span>Result</span><strong>67.49%</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="edu-card-right">
+                        <div class="score-display">
+                            <div class="score-circle green">
+                                <div class="score-text">
+                                    <span class="num">67.49<span class="pct">%</span></span>
+                                    <span class="lbl">Percentage</span>
+                                </div>
+                            </div>
+                            <div class="score-graph">
+                                <div class="graph-header">Performance Trend <span class="tag green">Keep Growing! <i
+                                            class="fa-solid fa-seedling"></i></span></div>
+                                <svg viewBox="0 0 200 60" class="trend-line green">
+                                    <path d="M10,50 Q40,30 70,40 T130,20 T160,30 T190,10" fill="none"
+                                        stroke="var(--edu-green)" stroke-width="2" />
+                                    <circle cx="10" cy="50" r="3" fill="var(--edu-green)" />
+                                    <circle cx="70" cy="40" r="3" fill="var(--edu-green)" />
+                                    <circle cx="130" cy="20" r="3" fill="var(--edu-green)" />
+                                    <circle cx="160" cy="30" r="3" fill="var(--edu-green)" />
+                                    <circle cx="190" cy="10" r="3" fill="var(--edu-green)" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academic Summary Footer -->
+        <div class="academic-summary reveal-up glass-card" style="--delay:0.5s">
+            <div class="summary-item">
+                <div class="sum-icon purple"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="sum-text">
+                    <strong>2 <span>Degrees</span></strong>
+                    <span>1 Completed</span>
+                    <span class="purple-text">1 Pursuing</span>
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="sum-icon orange"><i class="fa-solid fa-file-contract"></i></div>
+                <div class="sum-text">
+                    <strong>3 <span>Academic Levels</span></strong>
+                    <span>10th, 12th, Graduation,</span>
+                    <span>Post Graduation</span>
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="sum-icon blue"><i class="fa-solid fa-book-open"></i></div>
+                <div class="sum-text">
+                    <strong>External Mode</strong>
+                    <span>Post Graduation</span>
+                    <span>Flexible learning with career preparation</span>
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="sum-icon green"><i class="fa-solid fa-bullseye"></i></div>
+                <div class="sum-text">
+                    <strong>Focused Goals</strong>
+                    <span>Continuous learning</span>
+                    <span>and skill development</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="academic-footer-msg reveal-up" style="--delay:0.6s">
+            <p><i class="fa-solid fa-star"></i> Continuing the journey of learning, growing, and achieving
+                excellence. <i class="fa-solid fa-heart" style="color:var(--edu-purple)"></i></p>
         </div>
     </section>
 
-    <!-- 17 CONTACT & 18 FOOTER -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="contact-title">
-                HAVE A PROJECT<br>IN MIND?
+    <!-- ═══════════════════════════════════════
+             CERTIFICATES SECTION
+        ═══════════════════════════════════════ -->
+    <section id="certificates" class="section certificates-section">
+        <div class="section-eyebrow reveal-up">Credentials</div>
+        <h2 class="section-title reveal-up">Certifications <span class="title-accent">&amp; Achievements</span></h2>
+
+        <!-- Filter -->
+        <div class="cert-filters reveal-up" style="--delay:0.1s">
+            <button class="filter-pill active" data-cert-filter="all">All</button>
+            <button class="filter-pill" data-cert-filter="nasscom">NASSCOM</button>
+            <button class="filter-pill" data-cert-filter="forage">Forage</button>
+            <button class="filter-pill" data-cert-filter="udemy">Udemy</button>
+            <button class="filter-pill" data-cert-filter="unstop">Unstop</button>
+        </div>
+
+        <div class="cert-grid" id="certGrid">
+
+            <!-- Certificate: QuizOff 2026 -->
+            <div class="cert-card glass-card reveal-up" data-cert-tags="unstop" style="--delay:0.05s">
+                <div class="cert-img-wrap">
+                    <img src="images/certificates/quizoff-2026.png" alt="QuizOff 2026" loading="lazy">
+                    <div class="cert-img-overlay"></div>
+                </div>
+                <div class="cert-card-body">
+                    <div class="cert-issuer-row">
+                        <span class="cert-org">Unstop · CampusCrew</span>
+                        <span class="cert-badge unstop">Unstop</span>
+                    </div>
+                    <h3 class="cert-name">QuizOff 2026: India's Biggest AI Quiz</h3>
+                    <div class="cert-tags-row"><span>AI Quiz</span><span>CampusCrew</span></div>
+                    <a href="images/certificates/quizoff-2026.png" target="_blank" class="cert-view-btn">
+                        <i class="fa-solid fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certificate: ChatGPT -->
+            <div class="cert-card glass-card reveal-up" data-cert-tags="udemy" style="--delay:0.1s">
+                <div class="cert-img-wrap">
+                    <img src="images/certificates/udemy-chatgpt.jpg" alt="AI For Brand Storytelling" loading="lazy">
+                    <div class="cert-img-overlay"></div>
+                </div>
+                <div class="cert-card-body">
+                    <div class="cert-issuer-row">
+                        <span class="cert-org">Udemy</span>
+                        <span class="cert-badge udemy">Udemy</span>
+                    </div>
+                    <h3 class="cert-name">AI For Brand Storytelling Using ChatGPT</h3>
+                    <div class="cert-tags-row"><span>AI</span><span>ChatGPT</span><span>Marketing</span></div>
+                    <a href="images/certificates/udemy-chatgpt.jpg" target="_blank" class="cert-view-btn">
+                        <i class="fa-solid fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certificate: Microsoft Copilot -->
+            <div class="cert-card glass-card reveal-up" data-cert-tags="forage" style="--delay:0.15s">
+                <div class="cert-img-wrap">
+                    <img src="images/certificates/copilot.jpg" alt="Microsoft Copilot" loading="lazy">
+                    <div class="cert-img-overlay"></div>
+                </div>
+                <div class="cert-card-body">
+                    <div class="cert-issuer-row">
+                        <span class="cert-org">Microsoft</span>
+                        <span class="cert-badge forage">Forage</span>
+                    </div>
+                    <h3 class="cert-name">Microsoft Copilot — AI Tools</h3>
+                    <div class="cert-tags-row"><span>Microsoft</span><span>AI Copilot</span></div>
+                    <a href="images/certificates/copilot.jpg" target="_blank" class="cert-view-btn">
+                        <i class="fa-solid fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certificate: Tata Cybersecurity -->
+            <div class="cert-card glass-card reveal-up" data-cert-tags="forage" style="--delay:0.2s">
+                <div class="cert-img-wrap">
+                    <img src="images/certificates/tata-cybersecurity.jpg" alt="Tata Cybersecurity" loading="lazy">
+                    <div class="cert-img-overlay"></div>
+                </div>
+                <div class="cert-card-body">
+                    <div class="cert-issuer-row">
+                        <span class="cert-org">Tata · Forage</span>
+                        <span class="cert-badge forage">Forage</span>
+                    </div>
+                    <h3 class="cert-name">Cyber Security Analyst — Tata</h3>
+                    <div class="cert-tags-row"><span>Cybersecurity</span><span>Tata</span></div>
+                    <a href="images/certificates/tata-cybersecurity.jpg" target="_blank" class="cert-view-btn">
+                        <i class="fa-solid fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certificate: Windows Command Mastery -->
+            <div class="cert-card glass-card reveal-up" data-cert-tags="nasscom" style="--delay:0.25s">
+                <div class="cert-img-wrap">
+                    <img src="images/certificates/Windows Command Mastery.jpg" alt="Windows Command Mastery"
+                        loading="lazy">
+                    <div class="cert-img-overlay"></div>
+                </div>
+                <div class="cert-card-body">
+                    <div class="cert-issuer-row">
+                        <span class="cert-org">Skill India · NASSCOM</span>
+                        <span class="cert-badge nasscom">NASSCOM</span>
+                    </div>
+                    <h3 class="cert-name">Windows Command Mastery</h3>
+                    <div class="cert-tags-row"><span>Windows</span><span>CLI</span><span>NASSCOM</span></div>
+                    <a href="images/certificates/Windows Command Mastery.jpg" target="_blank" class="cert-view-btn">
+                        <i class="fa-solid fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certificate: Information Security Analyst -->
+            <div class="cert-card glass-card reveal-up" data-cert-tags="nasscom" style="--delay:0.3s">
+                <div class="cert-img-wrap">
+                    <img src="images/certificates/Information Security Analyst.jpg" alt="Information Security Analyst"
+                        loading="lazy">
+                    <div class="cert-img-overlay"></div>
+                </div>
+                <div class="cert-card-body">
+                    <div class="cert-issuer-row">
+                        <span class="cert-org">Skill India · NASSCOM</span>
+                        <span class="cert-badge nasscom">NASSCOM</span>
+                    </div>
+                    <h3 class="cert-name">Information Security Analyst</h3>
+                    <div class="cert-tags-row"><span>Cyber Security</span><span>NASSCOM</span></div>
+                    <a href="images/certificates/Information Security Analyst.jpg" target="_blank"
+                        class="cert-view-btn">
+                        <i class="fa-solid fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certificate: Network Security Engineer -->
+            <div class="cert-card glass-card reveal-up" data-cert-tags="nasscom" style="--delay:0.35s">
+                <div class="cert-img-wrap">
+                    <img src="images/certificates/Network Security Engineer.jpg" alt="Network Security Engineer"
+                        loading="lazy">
+                    <div class="cert-img-overlay"></div>
+                </div>
+                <div class="cert-card-body">
+                    <div class="cert-issuer-row">
+                        <span class="cert-org">Skill India · NASSCOM</span>
+                        <span class="cert-badge nasscom">NASSCOM</span>
+                    </div>
+                    <h3 class="cert-name">Network Security Engineer</h3>
+                    <div class="cert-tags-row"><span>Networking</span><span>Cybersecurity</span></div>
+                    <a href="images/certificates/Network Security Engineer.jpg" target="_blank" class="cert-view-btn">
+                        <i class="fa-solid fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certificate: IoT Security Analyst -->
+            <div class="cert-card glass-card reveal-up" data-cert-tags="nasscom" style="--delay:0.4s">
+                <div class="cert-img-wrap">
+                    <img src="images/certificates/IoT Security Analyst.jpg" alt="IoT Security Analyst" loading="lazy">
+                    <div class="cert-img-overlay"></div>
+                </div>
+                <div class="cert-card-body">
+                    <div class="cert-issuer-row">
+                        <span class="cert-org">Skill India · NASSCOM</span>
+                        <span class="cert-badge nasscom">NASSCOM</span>
+                    </div>
+                    <h3 class="cert-name">IoT Security Analyst</h3>
+                    <div class="cert-tags-row"><span>IoT</span><span>Security</span><span>NASSCOM</span></div>
+                    <a href="images/certificates/IoT Security Analyst.jpg" target="_blank" class="cert-view-btn">
+                        <i class="fa-solid fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certificate: AI DevOps Analyst -->
+            <div class="cert-card glass-card reveal-up" data-cert-tags="nasscom" style="--delay:0.45s">
+                <div class="cert-img-wrap">
+                    <img src="images/certificates/AI Devops Analyst.jpg" alt="AI DevOps Analyst" loading="lazy">
+                    <div class="cert-img-overlay"></div>
+                </div>
+                <div class="cert-card-body">
+                    <div class="cert-issuer-row">
+                        <span class="cert-org">Skill India · NASSCOM</span>
+                        <span class="cert-badge nasscom">NASSCOM</span>
+                    </div>
+                    <h3 class="cert-name">AI DevOps Analyst</h3>
+                    <div class="cert-tags-row"><span>AI</span><span>DevOps</span><span>NASSCOM</span></div>
+                    <a href="images/certificates/AI Devops Analyst.jpg" target="_blank" class="cert-view-btn">
+                        <i class="fa-solid fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+             CONTACT SECTION
+        ═══════════════════════════════════════ -->
+    <section id="contact" class="section contact-section">
+        <div class="contact-cta-wrap reveal-up">
+            <div class="contact-cta-badge">Let's Connect</div>
+            <h2 class="contact-cta-title">Let's Build Something <span class="title-accent">Great Together.</span>
             </h2>
-            <p
-                style="font-family: 'Space Mono', monospace; font-size: 1.2rem; color: var(--c-gray); margin-bottom: 3rem; letter-spacing: 0.15em; font-weight: 500; text-transform: uppercase;">
-                LET'S BUILD SOMETHING USEFUL.
-            </p>
-            <div class="flex justify-center" style="gap: 1rem;">
-                <a href="mailto:vanvihemani@gmail.com" class="btn">START A PROJECT ↗</a>
-                <a href="#" class="btn btn-secondary">VIEW GITHUB ↗</a>
-                <a href="#" class="btn btn-secondary">LINKEDIN ↗</a>
+            <p class="contact-cta-sub">Have a project, opportunity, or collaboration in mind? Let's connect.</p>
+            <div class="contact-quick-links">
+                <a href="mailto:rathodmilan216@gmail.com" class="contact-quick-btn">
+                    <i class="fa-solid fa-envelope"></i> Email Me
+                </a>
+                <a href="https://wa.me/919327599254" target="_blank" class="contact-quick-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://linkedin.com/in/milan-rathod07/" target="_blank" class="contact-quick-btn linkedin">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://github.com/Milan07xt" target="_blank" class="contact-quick-btn github">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="contact-main-grid">
+            <!-- Contact Form -->
+            <div class="contact-form-card glass-card reveal-up" style="--delay:0.1s">
+                <h3 class="contact-form-title">Send a Message</h3>
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="form-field">
+                        <label for="contact-name">Your Name</label>
+                        <input id="contact-name" name="name" type="text" placeholder="Milan Rathod" required
+                            autocomplete="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="contact-email">Email Address</label>
+                        <input id="contact-email" name="email" type="email" placeholder="hello@example.com" required
+                            autocomplete="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="contact-number">Phone (Optional)</label>
+                        <input id="contact-number" name="number" type="tel" placeholder="+91 98765 43210"
+                            autocomplete="tel">
+                    </div>
+                    <div class="form-field">
+                        <label for="contact-subject">Subject</label>
+                        <input id="contact-subject" name="subject" type="text"
+                            placeholder="Project inquiry / Collaboration">
+                    </div>
+                    <div class="form-field">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5"
+                            placeholder="Tell me about your project or opportunity..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary-pill full-w" id="contactSubmitBtn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                    <span id="formStatus" class="form-status" aria-live="polite"></span>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info-col reveal-up" style="--delay:0.2s">
+                <div class="contact-info-card glass-card">
+                    <a href="mailto:rathodmilan216@gmail.com" class="contact-info-item">
+                        <div class="contact-info-icon" style="--c:#3776AB"><i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <div class="contact-info-label">Email</div>
+                            <div class="contact-info-value">rathodmilan216@gmail.com</div>
+                        </div>
+                    </a>
+                    <a href="tel:+919327599254" class="contact-info-item">
+                        <div class="contact-info-icon" style="--c:#4CAF50"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <div class="contact-info-label">Phone</div>
+                            <div class="contact-info-value">+91 9327599254</div>
+                        </div>
+                    </a>
+                    <a href="https://maps.app.goo.gl/B167LYB5MMnmZZpU7" target="_blank" class="contact-info-item">
+                        <div class="contact-info-icon" style="--c:#FF5722"><i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <div class="contact-info-label">Location</div>
+                            <div class="contact-info-value">Mandva, Junagadh, Gujarat</div>
+                        </div>
+                    </a>
+                    <div class="contact-map"
+                        style="border-radius: 12px; overflow: hidden; display: flex; width: 100%; height: 200px; margin-top: 10px;">
+                        <iframe
+                            src="https://maps.google.com/maps?q=Mandva,%20Junagadh,%20Gujarat&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <!-- Notice Banner -->
+                <div class="contact-notice glass-card">
+                    <div class="notice-icon-wrap"><i class="fa-solid fa-check-circle"></i></div>
+                    <div>
+                        <p class="notice-title"><i class="fa-solid fa-paper-plane"></i> All messages are
+                            automatically redirected to:</p>
+                        <p class="notice-detail"><strong>Email:</strong> rathodmilan216@gmail.com</p>
+                        <p class="notice-detail"><strong>Phone:</strong> +91 9327599254</p>
+                        <p class="notice-sub">Every submission triggers instant notifications via email and SMS.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h2 class="text-h5" style="margin-bottom: 1rem;">HEMANI VANVI</h2>
-                    <p style="color: black; margin-bottom: 2rem;"><b>UI/UX DESIGNER<br>FULL STACK DEVELOPER</b></p>
-                    <div class="flex gap-4">
-                        <a href="#" style="color: var(--c-black); font-weight: 600;">LinkedIn</a>
-                        <a href="#" style="color: var(--c-black); font-weight: 600;">GitHub</a>
-                        <a href="#" style="color: var(--c-black); font-weight: 600;">Instagram</a>
-                    </div>
-                </div>
-                <div class="footer-nav">
-                    <p style="font-size: 10px; color: var(--c-gray); letter-spacing: 0.1em; margin-bottom: 1rem;">
-                        EXPLORE</p>
-                    <a href="#work">WORK</a>
-                    <a href="#about">ABOUT</a>
-                    <a href="#skills">SKILLS</a>
-                    <a href="#lab">LAB</a>
-                </div>
-                <div>
-                    <p style="font-size: 10px; color: var(--c-gray); letter-spacing: 0.1em; margin-bottom: 1rem;">
-                        CONTACT</p>
-                    <p style="font-weight: 600; margin-bottom: 0.5rem;"><a href="mailto:vanvihemani@gmail.com"
-                            style="color: var(--c-black);">vanvihemani@gmail.com</a></p>
-                    <p style="font-weight: 600; color: var(--c-black);">+91 87990 64426</p>
-                </div>
-                <div>
-                    <p style="font-size: 10px; color: var(--c-gray); letter-spacing: 0.1em; margin-bottom: 1rem;">
-                        LOCATION</p>
-                    <p style="font-weight: 600; color: var(--c-black);"><a
-                            href="https://maps.app.goo.gl/oQ7eoVwH7VV5W7Cx5">Junagadh,<br>Gujarat, India</a></p>
-                </div>
+    <!-- ═══════════════════════════════════════
+             FOOTER
+        ═══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">⟨/⟩ Milan Rathod</span>
+                <span class="footer-tagline">Python Developer</span>
             </div>
-            <div class="flex"
-                style="justify-content: space-between; font-size: 12px; color: var(--c-gray); text-transform: uppercase;">
-                <div>&copy; 2026 HEMANI VANVI</div>
-                <div>DESIGNED IN FIGMA. BUILT WITH CODE.</div>
+            <div class="footer-social">
+                <a href="https://github.com/Milan07xt" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/milan-rathod07/" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:rathodmilan216@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Milan Rathod. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <!-- JS -->
-    <script src="js/script.js"></script>
+    </div><!-- /.portfolio-frame -->
+
+    <!-- Back to Top -->
+    <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </a>
+
+    <!-- ═══════════════════════════════════════
+         PROJECT CASE STUDY MODAL
+    ═══════════════════════════════════════ -->
+    <div id="projectModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-container glass-card">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header">
+                <span class="modal-category" id="modalCategory">Python / Django / OpenCV</span>
+                <h2 id="modalTitle" class="modal-title">Project Title</h2>
+                <div class="modal-links">
+                    <a href="#" id="modalLiveLink" target="_blank" class="proj-btn proj-btn-primary">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                    </a>
+                    <a href="#" id="modalCodeLink" target="_blank" class="proj-btn proj-btn-ghost">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+            <div class="modal-body-grid">
+                <div class="modal-body-left">
+                    <h3>Overview</h3>
+                    <p id="modalDesc">Detailed description goes here...</p>
+                    <h3>Key Features</h3>
+                    <ul id="modalFeatures" class="modal-features-list"></ul>
+                </div>
+                <div class="modal-body-right">
+                    <div class="modal-arch-card glass-card">
+                        <h4><i class="fa-solid fa-network-wired"></i> Architecture</h4>
+                        <p id="modalArchitecture">System architecture details...</p>
+                    </div>
+                    <div class="modal-stack-card glass-card">
+                        <h4>Tech Stack</h4>
+                        <div id="modalTags" class="modal-tags-row"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Success Modal -->
+    <div id="contactSuccessModal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="success-modal glass-card">
+            <div class="success-icon-wrap">
+                <div class="success-checkmark">
+                    <svg viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                </div>
+            </div>
+            <h2>Message Sent Successfully!</h2>
+            <p>Thank you for reaching out. Milan will get back to you shortly.</p>
+            <button class="btn-primary-pill" id="successCloseBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Recruiter Mode Overlay -->
+    <div id="recruiterOverlay" class="recruiter-overlay" role="dialog" aria-modal="true" aria-label="Recruiter Mode"
+        hidden>
+        <div class="recruiter-panel">
+            <button class="recruiter-close" id="recruiterClose" aria-label="Close Recruiter Mode">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="recruiter-header">
+                <div class="recruiter-avatar">
+                    <img src="images/profile-transparent.png" alt="Milan Rathod">
+                </div>
+                <div>
+                    <div class="recruiter-badge"><i class="fa-solid fa-briefcase"></i> Recruiter Mode</div>
+                    <h2>Milan Rathod</h2>
+                    <p class="recruiter-role">Python Developer · B.Sc. IT · Gujarat, India</p>
+                </div>
+            </div>
+
+            <div class="recruiter-grid">
+                <div class="recruiter-block">
+                    <h3><i class="fa-solid fa-code"></i> Core Skills</h3>
+                    <div class="recruiter-chips">
+                        <span class="rc-chip python">Python</span>
+                        <span class="rc-chip django">Django</span>
+                        <span class="rc-chip">FastAPI</span>
+                        <span class="rc-chip">REST API</span>
+                        <span class="rc-chip">SQLite3</span>
+                        <span class="rc-chip">OpenCV</span>
+                        <span class="rc-chip">Git / GitHub</span>
+                        <span class="rc-chip">JavaScript</span>
+                        <span class="rc-chip">HTML / CSS</span>
+                    </div>
+                </div>
+
+                <div class="recruiter-block">
+                    <h3><i class="fa-solid fa-laptop-code"></i> Best Projects</h3>
+                    <ul class="recruiter-projects-list">
+                        <li><i class="fa-solid fa-circle" style="color:#3776AB;font-size:8px"></i> <strong>Face
+                                Recognition Attendance</strong> — Python, Django, OpenCV, REST API</li>
+                        <li><i class="fa-solid fa-circle" style="color:#3776AB;font-size:8px"></i> <strong>Gym
+                                Management System</strong> — Python, Django, SQLite3</li>
+                        <li><i class="fa-solid fa-circle" style="color:#3776AB;font-size:8px"></i> <strong>AI Portfolio
+                                Assistant</strong> — Python, FastAPI, OpenAI</li>
+                        <li><i class="fa-solid fa-circle" style="color:#3776AB;font-size:8px"></i> <strong>Hotel
+                                Management Website</strong> — HTML, CSS, JavaScript</li>
+                    </ul>
+                </div>
+
+                <div class="recruiter-block">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                    <p><strong>B.Sc. Information Technology</strong><br>Noble University, Junagadh (2023–2026)<br>CGPA:
+                        6.35</p>
+                </div>
+
+                <div class="recruiter-block">
+                    <h3><i class="fa-solid fa-award"></i> Certifications</h3>
+                    <p>9 certificates from NASSCOM, Udemy, Microsoft, Tata, Unstop</p>
+                </div>
+            </div>
+
+            <div class="recruiter-contact">
+                <a href="resume/Milankumar_Rathod_Resume.pdf" class="btn-primary-pill" download>
+                    <i class="fa-solid fa-download"></i> Download Resume
+                </a>
+                <a href="mailto:rathodmilan216@gmail.com" class="btn-glass-pill">
+                    <i class="fa-solid fa-envelope"></i> rathodmilan216@gmail.com
+                </a>
+                <a href="https://github.com/Milan07xt" target="_blank" class="btn-glass-pill">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/milan-rathod07/" target="_blank" class="btn-glass-pill">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="ai-agent-widget.js"></script>
 </body>
 
 </html>

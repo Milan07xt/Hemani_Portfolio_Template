@@ -1,0 +1,11 @@
+# Vercel Deployment Ignore File
+# Ignore the Python AI backend since we use the Vercel API route instead
+ai-agent/backend/venv
+ai-agent/backend/__pycache__
+ai-agent/backend/.env
+*.pyc
+.git
+.gitignore
+README.md
+node_modules
+.vscode

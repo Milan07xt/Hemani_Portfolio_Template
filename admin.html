@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milan Rathod — Contact Analytics Dashboard</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #0a0d13;
+            --panel: rgba(16, 22, 34, 0.65);
+            --panel-solid: #101622;
+            --line: rgba(227, 168, 59, 0.15);
+            --line-soft: rgba(227, 168, 59, 0.08);
+            --text: #eef1f6;
+            --text-dim: #a0aec0;
+            --text-faint: #4a5568;
+            --amber: #e3a83b;
+            --amber-rgb: 227, 168, 59;
+            --green: #3ddc84;
+            --crimson: #e056fd;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(var(--amber-rgb), 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(61, 220, 132, 0.03) 0%, transparent 50%);
+        }
+
+        /* Glassmorphism utility */
+        .glass {
+            background: var(--panel);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--line);
+        }
+
+        /* Login Screen */
+        #login-screen {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            background: rgba(10, 13, 19, 0.95);
+            transition: opacity 0.4s ease;
+        }
+
+        .login-card {
+            width: 90%;
+            max-width: 420px;
+            padding: 40px 30px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(var(--amber-rgb), 0.05);
+        }
+
+        .login-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 30px;
+        }
+
+        .login-logo span {
+            color: var(--amber);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            color: #fff;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--amber);
+            box-shadow: 0 0 15px rgba(var(--amber-rgb), 0.25);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .btn.primary {
+            background: var(--amber);
+            color: #17130a;
+        }
+
+        .btn.primary:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(var(--amber-rgb), 0.2);
+        }
+
+        #login-error {
+            color: #ff5e57;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            min-height: 20px;
+        }
+
+        /* Dashboard Screen */
+        #dashboard-screen {
+            display: none;
+            padding: 40px 5%;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            flex-grow: 1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-title h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .header-title p {
+            color: var(--text-dim);
+            margin-top: 5px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn.secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            border: 1px solid var(--line-soft);
+        }
+
+        .btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--amber);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            padding: 25px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(var(--amber-rgb), 0.1);
+            color: var(--amber);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 1px solid rgba(var(--amber-rgb), 0.2);
+        }
+
+        .stat-info h3 {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-info p {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-top: 5px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Controls card */
+        .controls-bar {
+            padding: 20px 25px;
+            border-radius: var(--radius-md);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+            min-width: 250px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--line-soft);
+            padding: 12px 18px 12px 45px;
+            color: #fff;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--amber);
+        }
+
+        /* Table Card */
+        .table-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 18px 25px;
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            border-bottom: 1px solid var(--line);
+        }
+
+        td {
+            padding: 18px 25px;
+            border-bottom: 1px solid var(--line-soft);
+            color: var(--text-dim);
+            vertical-align: top;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.015);
+            color: #fff;
+        }
+
+        .message-cell {
+            min-width: 300px;
+            max-width: 500px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        .phone-cell, .email-cell {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+        }
+
+        .timestamp-cell {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .delete-btn {
+            background: rgba(255, 94, 87, 0.1);
+            color: #ff5e57;
+            border: 1px solid rgba(255, 94, 87, 0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .delete-btn:hover {
+            background: #ff5e57;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .empty-row {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 30px;
+            text-align: center;
+            color: var(--text-faint);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--line-soft);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-actions {
+                width: 100%;
+            }
+            .header-actions button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Wall Screen -->
+    <div id="login-screen">
+        <div class="login-card glass">
+            <div class="login-logo">
+                <span>Milan</span> Analytics
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">Enter Dashboard Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn primary">
+                    <i class="fa-solid fa-lock-open"></i> Authenticate
+                </button>
+                <div id="login-error"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Screen -->
+    <div id="dashboard-screen">
+        <header>
+            <div class="header-title">
+                <h1>Contact Analytics</h1>
+                <p>Manage and audit portfolio submission records stored in real-time</p>
+            </div>
+            <div class="header-actions">
+                <button id="downloadBtn" class="btn secondary">
+                    <i class="fa-solid fa-download"></i> Download CSV
+                </button>
+                <button id="clearAllBtn" class="btn secondary" style="border-color: rgba(255,94,87,0.3); color: #ff5e57;">
+                    <i class="fa-solid fa-trash-can"></i> Clear All
+                </button>
+                <button id="logoutBtn" class="btn secondary">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats row -->
+        <div class="stats-grid">
+            <div class="stat-card glass">
+                <div class="stat-icon"><i class="fa-solid fa-inbox"></i></div>
+                <div class="stat-info">
+                    <h3>Total Messages</h3>
+                    <p id="stat-total">0</p>
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="stat-info">
+                    <h3>Unique Contacts</h3>
+                    <p id="stat-unique">0</p>
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="stat-info">
+                    <h3>Last Submission</h3>
+                    <p id="stat-last" style="font-size: 1.1rem; line-height: 1.3; margin-top: 10px;">None</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Controls -->
+        <div class="controls-bar glass">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search by name, email, subject, or message...">
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-dim);" id="resultCount">Showing 0 of 0 logs</div>
+        </div>
+
+        <!-- Table View -->
+        <div class="table-card glass">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                            <th>Received At</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactsTableBody">
+                        <tr>
+                            <td colspan="7" class="empty-row">Loading submissions...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Milan Rathod. Admin Analytics Dashboard.</p>
+    </footer>
+
+    <script>
+        const API_BASE = window.location.origin;
+        let sessionToken = localStorage.getItem('adminToken') || '';
+        let allContacts = [];
+
+        const loginScreen = document.getElementById('login-screen');
+        const dashboardScreen = document.getElementById('dashboard-screen');
+        const loginForm = document.getElementById('loginForm');
+        const passwordInput = document.getElementById('password');
+        const loginError = document.getElementById('login-error');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const contactsTableBody = document.getElementById('contactsTableBody');
+        const searchInput = document.getElementById('searchInput');
+        const resultCount = document.getElementById('resultCount');
+
+        // Check if already authenticated on load
+        if (sessionToken) {
+            showDashboard();
+        }
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const password = passwordInput.value;
+            loginError.textContent = '';
+
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    sessionToken = data.token;
+                    localStorage.setItem('adminToken', sessionToken);
+                    passwordInput.value = '';
+                    showDashboard();
+                } else {
+                    loginError.textContent = 'Invalid credentials. Please try again.';
+                }
+            } catch (err) {
+                console.error(err);
+                loginError.textContent = 'Server connection error.';
+            }
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            sessionToken = '';
+            localStorage.removeItem('adminToken');
+            loginScreen.style.display = 'flex';
+            dashboardScreen.style.display = 'none';
+        });
+
+        function showDashboard() {
+            loginScreen.style.display = 'none';
+            dashboardScreen.style.display = 'block';
+            loadContacts();
+        }
+
+        async function loadContacts() {
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/contacts`, {
+                    headers: { 'Authorization': `Bearer ${sessionToken}` }
+                });
+
+                if (res.status === 401) {
+                    // Unauthorized: token expired or invalid
+                    sessionToken = '';
+                    localStorage.removeItem('adminToken');
+                    loginScreen.style.display = 'flex';
+                    dashboardScreen.style.display = 'none';
+                    return;
+                }
+
+                if (res.ok) {
+                    allContacts = await res.json();
+                    // Reverse sort to show latest first
+                    allContacts.reverse();
+                    renderTable(allContacts);
+                    calculateStats(allContacts);
+                } else {
+                    contactsTableBody.innerHTML = `<tr><td colspan="7" class="empty-row">Error loading contacts from database</td></tr>`;
+                }
+            } catch (err) {
+                console.error(err);
+                contactsTableBody.innerHTML = `<tr><td colspan="7" class="empty-row">Network failure while connecting to contacts API</td></tr>`;
+            }
+        }
+
+        function calculateStats(contacts) {
+            document.getElementById('stat-total').textContent = contacts.length;
+            
+            // Unique emails
+            const emails = new Set(contacts.map(c => c.email.toLowerCase().trim()).filter(Boolean));
+            document.getElementById('stat-unique').textContent = emails.size;
+
+            // Last submission date
+            if (contacts.length > 0) {
+                const latest = contacts[0]; // first item since list is reversed
+                if (latest.timestamp) {
+                    const date = new Date(latest.timestamp);
+                    document.getElementById('stat-last').innerHTML = `
+                        <strong>${latest.name}</strong><br>
+                        ${date.toLocaleDateString()} ${date.toLocaleTimeString()}
+                    `;
+                } else {
+                    document.getElementById('stat-last').textContent = 'Unknown Time';
+                }
+            } else {
+                document.getElementById('stat-last').textContent = 'No messages';
+            }
+        }
+
+        function renderTable(contacts) {
+            contactsTableBody.innerHTML = '';
+            if (contacts.length === 0) {
+                contactsTableBody.innerHTML = `<tr><td colspan="7" class="empty-row">No messages received yet</td></tr>`;
+                resultCount.textContent = 'Showing 0 of 0 logs';
+                return;
+            }
+
+            contacts.forEach(contact => {
+                const tr = document.createElement('tr');
+                
+                const timeString = contact.timestamp 
+                    ? new Date(contact.timestamp).toLocaleString()
+                    : 'N/A';
+
+                tr.innerHTML = `
+                    <td><strong>${escapeHTML(contact.name)}</strong></td>
+                    <td class="email-cell"><a href="mailto:${escapeHTML(contact.email)}" style="color: var(--amber); text-decoration: none;">${escapeHTML(contact.email)}</a></td>
+                    <td class="phone-cell">${escapeHTML(contact.number) || '<span style="opacity:0.3">—</span>'}</td>
+                    <td><strong>${escapeHTML(contact.subject) || '<span style="opacity:0.3">No Subject</span>'}</strong></td>
+                    <td class="message-cell">${escapeHTML(contact.message)}</td>
+                    <td class="timestamp-cell">${timeString}</td>
+                    <td>
+                        <button class="delete-btn" onclick="deleteContact(${contact.index})">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                contactsTableBody.appendChild(tr);
+            });
+
+            resultCount.textContent = `Showing ${contacts.length} of ${allContacts.length} logs`;
+        }
+
+        async function deleteContact(index) {
+            if (!confirm('Are you sure you want to delete this submission row from CSV?')) return;
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/contacts/delete`, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${sessionToken}`
+                    },
+                    body: JSON.stringify({ index })
+                });
+
+                if (res.ok) {
+                    loadContacts();
+                } else {
+                    alert('Failed to delete row: ' + await res.text());
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Network error while deleting row');
+            }
+        }
+
+        clearAllBtn.addEventListener('click', async () => {
+            if (!confirm('WARNING: Are you absolutely sure you want to permanently clear the contact list? This action cannot be undone.')) return;
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/contacts/clear`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${sessionToken}` }
+                });
+
+                if (res.ok) {
+                    loadContacts();
+                } else {
+                    alert('Failed to clear contacts: ' + await res.text());
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Network error while clearing logs');
+            }
+        });
+
+        // Simple live search filtering
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase().trim();
+            if (!query) {
+                renderTable(allContacts);
+                return;
+            }
+
+            const filtered = allContacts.filter(c => {
+                return (c.name && c.name.toLowerCase().includes(query)) ||
+                       (c.email && c.email.toLowerCase().includes(query)) ||
+                       (c.subject && c.subject.toLowerCase().includes(query)) ||
+                       (c.message && c.message.toLowerCase().includes(query)) ||
+                       (c.number && c.number.includes(query));
+            });
+            renderTable(filtered);
+        });
+
+        // Raw CSV Downloader
+        downloadBtn.addEventListener('click', () => {
+            if (allContacts.length === 0) {
+                alert('No records available to export.');
+                return;
+            }
+            
+            // Build CSV string from contacts
+            const headers = ['Name', 'Mail', 'Number', 'Subject', 'Message', 'Timestamp'];
+            const rows = allContacts.map(c => [
+                c.name, c.email, c.number, c.subject, c.message, c.timestamp
+            ].map(val => '"' + String(val || '').replace(/"/g, '""') + '"').join(','));
+            
+            const csvContent = "data:text/csv;charset=utf-8," + headers.join(',') + '\n' + rows.join('\n');
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `contacts_export_${new Date().toISOString().slice(0, 10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        function escapeHTML(str) {
+            if (!str) return '';
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
+</body>
+</html>

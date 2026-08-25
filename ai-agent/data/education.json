@@ -1,0 +1,21 @@
+[
+    {
+        "degree": "Bachelor of Science in Information Technology (B.Sc IT)",
+        "institution": "Noble University, Junagadh",
+        "duration": "2023 - 2026",
+        "cgpa": "6.35",
+        "details": "Completed academic courses in Database Systems, Data Structures, Software Engineering, and Web Development. Focused projects around Python backend technologies."
+    },
+    {
+        "degree": "Higher Secondary (HSC) - Commerce Stream",
+        "institution": "GSEB Board",
+        "year": "2023",
+        "score": "78.41 PR"
+    },
+    {
+        "degree": "Secondary School (SSC)",
+        "institution": "GSEB Board",
+        "year": "2021",
+        "score": "67.49 PR"
+    }
+]
