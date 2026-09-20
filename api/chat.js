@@ -4,7 +4,7 @@
  */
 
 const API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
 
 const SYSTEM_PROMPT = `You are Milan Rathod's AI Portfolio Assistant, a professional, friendly, and helpful digital representative for his portfolio.
 Your job is to answer only questions about Milan's background, skills, projects, education, certificates, resume, experience, and contact info.
