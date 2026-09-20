@@ -38,6 +38,16 @@ app.use(express.static(__dirname));
 app.use(cors());
 app.use(express.json());
 
+// Handle invalid JSON gracefully without crashing or dumping stack trace
+app.use((err, req, res, next) => {
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    console.error('Received invalid JSON payload');
+    return res.status(400).send({ error: 'Invalid JSON payload' });
+  }
+  next(err);
+});
+
+
 // Initialize SQLite3 Database
 const dbPath = path.join(__dirname, 'portfolio.db');
 const db = new sqlite3.Database(dbPath, (err) => {
